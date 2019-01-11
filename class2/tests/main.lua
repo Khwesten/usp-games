@@ -21,7 +21,7 @@ function love.load(args)
     line = 2
   }
 
-  _player.texture = love.graphics.newImage("sprites/mage_f.png")
+  _player.texture = love.graphics.newImage("mage_f.png")
   _player.texture:setFilter('nearest', 'nearest')
   _player.quad = love.graphics.newQuad(0, 0, _player.w, _player.h, 96, 144)
 
