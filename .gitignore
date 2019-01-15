@@ -1,0 +1,6 @@
+.vscode/
+/boot.lua
+/dkjson.lua
+/vscode-debuggee.lua
+
+*\=\[C\]
