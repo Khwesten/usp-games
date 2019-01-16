@@ -3,6 +3,8 @@ function love.load(args)
   RIGHT_POSITION = 1
   DOWN_POSITION = 2
   LEFT_POSITION = 3
+  l_step = love.audio.newSource('audio/step01.ogg', 'static')
+  r_step = love.audio.newSource('audio/step02.ogg', 'static')
 
   currentTime = 0
   lastKeyPressed = 'down'
@@ -84,7 +86,7 @@ function love.keypressed(key)
 end
 
 function loadCharacter(player)
-  player.texture = love.graphics.newImage('sprites/mage_f.png')
+  player.texture = love.graphics.newImage('sprites/healer_f.png')
   player.texture:setFilter('nearest', 'nearest')
   player.quad = love.graphics.newQuad(0, 0, player.w, player.h, 96, 144)
 
@@ -115,15 +117,19 @@ function characterMovement(player, dirx, diry, dt)
   if love.keyboard.isDown('up') then
     line = UP_POSITION
     diry = -1
+    r_step:play()
   elseif love.keyboard.isDown('right') then
     line = RIGHT_POSITION
     dirx = 1
+    r_step:play()
   elseif love.keyboard.isDown('down') then
     line = DOWN_POSITION
     diry = 1
+    l_step:play()
   elseif love.keyboard.isDown('left') then
     line = LEFT_POSITION
     dirx = -1
+    l_step:play()
   end
 
   if not love.keyboard.isDown(lastKeyPressed) then
@@ -138,4 +144,3 @@ function characterMovement(player, dirx, diry, dt)
   player.frames[player.line] = frame
   player.line = line
 end
-
