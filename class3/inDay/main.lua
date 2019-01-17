@@ -23,7 +23,8 @@
 require 'common'
 local Entity = require 'entity'
 
-local _entity_timer
+local _easy_enemy_timer
+local _kamikaze_enemy_timer
 
 function love.load()
   W, H = love.graphics.getDimensions()
@@ -31,11 +32,10 @@ function love.load()
   _ais = {}
   _entities = {}
   _objects_on_screen = 0
-  _entity_timer = 0
+  _easy_enemy_timer = 0
+  _kamikaze_enemy_timer = 0
   _player = Entity.load 'player'
   _player.pos:set(W/2, 9*H/10)
-
-  love.graphics.print(_player.id, 100, 100)
 
   add_entity(_player)
 end
@@ -48,56 +48,37 @@ local CONTROLS = {
 }
 
 function love.update(dt)
-  -- Update entity timer
-  _entity_timer = _entity_timer + dt
+  _easy_enemy_timer = _easy_enemy_timer + dt
+  _kamikaze_enemy_timer = _kamikaze_enemy_timer + dt
 
-  if _entity_timer >= 2 then
-    -- Reseta contador
-    _entity_timer = 0
+  if _easy_enemy_timer >= 2 then
+    _easy_enemy_timer = 0
 
-    local ai = new 'ai' {}
-    local W = love.graphics.getDimensions()
-    local new_entity = Entity.load 'enemy'
-
-    new_entity.pos:set(love.math.random() * W, 10)
-    ai:setEntity(new_entity)
-
-    add_entity(new_entity, ai)
+    add_easy_enemy()
   end
 
-  -- AI control
-  for _,ai in next, _ais do
-    ai:think()
+  if _kamikaze_enemy_timer >= 3 then
+    _kamikaze_enemy_timer = 0
+
+    add_kamikaze_enemy()
   end
 
-  -- Player control
-  local dir = new(Vec) {}
-  local half_screen = love.graphics.getWidth()
+  ai_thinking()
 
-  for key,control_dir in pairs(CONTROLS) do
-    if love.keyboard.isDown(key) then
-      if not _player:screen_limit(key) then
-        dir:translate(control_dir)
-      end
-    end
-  end
+  player_control()
 
-  _player:setDirection(dir)
-
-  -- Update entities
-  for _,entity in next, _entities do
-    entity:update(_entities, dt)
-  end
+  update_entities(dt)
 end
 
 function love.draw()
   love.graphics.print(_objects_on_screen, 10, 10)
-  love.graphics.print(_player.health, 370, 10)
+  love.graphics.print(_player.spec.health, 370, 10)
 
-  if _player.health <= 0 then
+  if _player.spec.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)
-    love.graphics.print('Press space to continue', W/2 -80, H/2 + 20)
-    if love.keyboard.isDown('space') then
+    love.graphics.print('Press return to continue', W/2 -80, H/2 + 20)
+
+    if love.keyboard.isDown('return') then
       love.load()
     end
   end
@@ -105,6 +86,54 @@ function love.draw()
   for _,entity in next, _entities do
     entity:draw()
   end
+end
+
+function ai_thinking()
+  for _,ai in next, _ais do
+    ai:think()
+  end
+end
+
+function player_control()
+  if _player.spec.health <= 0 then
+    return
+  end
+
+  local dir = new(Vec) {}
+
+  for key,control_dir in pairs(CONTROLS) do
+    if love.keyboard.isDown(key) and not _player:screen_limit(key) then
+      dir:translate(control_dir)
+    end
+  end
+
+  _player:setDirection(dir)
+end
+
+function update_entities(dt)
+  for _,entity in next, _entities do
+    entity:update(_entities, dt)
+  end
+end
+
+function add_easy_enemy()
+  local ai = new 'ai-easy' {}
+  local new_entity = Entity.load 'enemy'
+
+  new_entity.pos:set(love.math.random() * W, 10)
+  ai:setEntity(new_entity)
+
+  add_entity(new_entity, ai)
+end
+
+function add_kamikaze_enemy()
+  local ai = new 'ai-kamikaze' {}
+  local new_entity = Entity.load 'enemy-kamikaze'
+
+  new_entity.pos:set(love.math.random() * W, 10)
+  ai:setEntity(new_entity)
+
+  add_entity(new_entity, ai)
 end
 
 function add_entity(entity, ai)
