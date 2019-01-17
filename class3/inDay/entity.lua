@@ -14,9 +14,12 @@ function Entity:init()
 
   self.id = memory_space:gsub(': ', '')
   self.type = self.spec.type
-  self.spec.health = 100
   self.dir = new(Vec) { 0, 0 }
   self.pos = self.pos or new(Vec) { 0, 0 }
+
+  if self.spec.type == 'player' then
+    self.spec.health = 100
+  end
 end
 
 function Entity:setDirection(dir)
@@ -116,11 +119,17 @@ function Entity:draw()
   g[view.type](unpack(view.params))
   g.pop()
 
-  g.push()
-  g.translate(self.pos:get())
-  g.setColor(area_collision.color)
-  g[area_collision.type](unpack(area_collision.params))
-  g.pop()
+  set_default_color()
+
+  if see_collision_area then
+    g.push()
+    g.translate(self.pos:get())
+    g.setColor(area_collision.color)
+    g[area_collision.type](unpack(area_collision.params))
+    g.pop()
+
+    set_default_color()
+  end
 end
 
 return Entity
