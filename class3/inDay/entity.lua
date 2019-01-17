@@ -32,10 +32,17 @@ function Entity:update(entities, dt)
     self.cooldown = self.cooldown - cooldown_between_shots
 
     local new_entity = Entity.load(self.spec.bullet)
-    new_entity.pos:set(self.pos.x, self.pos.y + self.spec.bullet_start)
-    new_entity:setDirection(new(Vec) (self.spec.bullet_direction))
+    --botão para atirar e resetar
+    if love.keyboard.isDown('space') and self.id == _player.id then
+      new_entity.pos:set(self.pos.x, self.pos.y + self.spec.bullet_start)
+      new_entity:setDirection(new(Vec) (self.spec.bullet_direction))
+      add_entity(new_entity)
+    elseif self.id ~= _player.id then
+      new_entity.pos:set(self.pos.x, self.pos.y + self.spec.bullet_start)
+      new_entity:setDirection(new(Vec) (self.spec.bullet_direction))
+      add_entity(new_entity)
+    end
 
-    add_entity(new_entity)
   end
 
   for _,entity in next, entities do
@@ -53,8 +60,18 @@ function Entity:out_of_screen()
   return self.pos.x > 400 or self.pos.x < 0 or self.pos.y > 600 or self.pos.y < 0
 end
 
-function Entity:screen_limit()
-  return self.pos.x > (love.graphics.getWidth() - 15) or self.pos.x < 15 or self.pos.y > (love.graphics.getHeight() - 15) or self.pos.y < 15
+function Entity:screen_limit(direction)
+  if direction == 'left' and self.pos.x < 15 then
+    return true
+  elseif direction == 'right' and self.pos.x > (love.graphics.getWidth() - 15) then
+    return true
+  elseif direction == 'down' and self.pos.y > (love.graphics.getHeight() - 15) then
+    return true
+  elseif direction == 'up' and self.pos.y < 15 then
+    return true
+  end
+
+  return false
 end
 
 function Entity:check_collision(entity)

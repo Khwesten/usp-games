@@ -23,7 +23,6 @@
 require 'common'
 local Entity = require 'entity'
 
-local _player
 local _entity_timer
 
 function love.load()
@@ -77,7 +76,7 @@ function love.update(dt)
 
   for key,control_dir in pairs(CONTROLS) do
     if love.keyboard.isDown(key) then
-      if not _player:screen_limit() then
+      if not _player:screen_limit(key) then
         dir:translate(control_dir)
       end
     end
