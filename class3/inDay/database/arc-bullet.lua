@@ -1,8 +1,8 @@
 
 return new 'spec' {
   type = 'bullet',
-  health = 5,
-  speed = 600,
+  health = 0,
+  speed = 500,
   damage = 15,
   firerate = 0,
   bullet = nil,
