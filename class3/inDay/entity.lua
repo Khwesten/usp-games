@@ -13,9 +13,10 @@ function Entity:init()
   local memory_space = tostring(self)
 
   self.id = memory_space:gsub(': ', '')
-  self.pos = self.pos or new(Vec) { 0, 0 }
-  self.dir = new(Vec) { 0, 0 }
   self.type = self.spec.type
+  self.spec.health = 100
+  self.dir = new(Vec) { 0, 0 }
+  self.pos = self.pos or new(Vec) { 0, 0 }
 end
 
 function Entity:setDirection(dir)

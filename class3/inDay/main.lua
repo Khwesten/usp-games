@@ -95,10 +95,6 @@ function ai_thinking()
 end
 
 function player_control()
-  if _player.spec.health <= 0 then
-    return
-  end
-
   local dir = new(Vec) {}
 
   for key,control_dir in pairs(CONTROLS) do
