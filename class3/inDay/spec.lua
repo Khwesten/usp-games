@@ -1,5 +1,6 @@
 
 local Spec = new(Object) {
+  type = 'spec',
   health = 50,
   speed = 100,
   firerate = 0,

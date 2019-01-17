@@ -1,5 +1,6 @@
 
 return new 'spec' {
+  type = 'bullet',
   health = 1000,
   speed = 600,
   firerate = 0,

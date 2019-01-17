@@ -16,6 +16,7 @@ function Entity:init()
   self.pos = self.pos or new(Vec) { 0, 0 }
   self.dir = new(Vec) { 0, 0 }
   self.health = self.spec.health
+  self.type = self.spec.type
 end
 
 function Entity:setDirection(dir)
@@ -42,15 +43,18 @@ function Entity:update(entities, dt)
       new_entity:setDirection(new(Vec) (self.spec.bullet_direction))
       add_entity(new_entity)
     end
-
   end
 
   for _,entity in next, entities do
-    if self:check_collision(entity) and entity.spec.hide_on_die then
-      if entity.health <= 0 then
+    if self:check_collision(entity) then
+      if entity.spec.hide_on_die and entity.health <= 0 then
         remove_entity(entity)
       end
-    elseif entity:out_of_screen() then
+      if self.type == 'bullet' then
+        remove_entity(self)
+      end
+    end
+    if entity:out_of_screen() then
       remove_entity(entity)
     end
   end
@@ -90,7 +94,7 @@ function Entity:check_collision(entity)
   local collided = (x1 - x2)^2 + (y2 - y1)^2 <= (r2 + r1)^2
 
   if collided then
-    self.health = self.health - 25
+    entity.health = entity.health - 25
     return true
   end
 

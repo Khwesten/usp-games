@@ -1,5 +1,6 @@
 
 return new 'spec' {
+  type = 'enemy',
   health = 100,
   speed = 300,
   firerate = 10,
