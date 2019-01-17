@@ -3,6 +3,7 @@ return new 'spec' {
   type = 'player',
   health = 100,
   speed = 300,
+  damage = 50,
   firerate = 10,
   bullet = 'simple-bullet',
   bullet_direction = { 0, -1 },
