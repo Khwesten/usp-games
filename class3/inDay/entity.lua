@@ -53,6 +53,10 @@ function Entity:out_of_screen()
   return self.pos.x > 400 or self.pos.x < 0 or self.pos.y > 600 or self.pos.y < 0
 end
 
+function Entity:screen_limit()
+  return self.pos.x > (love.graphics.getWidth() - 15) or self.pos.x < 15 or self.pos.y > (love.graphics.getHeight() - 15) or self.pos.y < 15
+end
+
 function Entity:check_collision(entity)
   if entity == nil or self.id == entity.id then
     return false

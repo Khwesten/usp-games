@@ -73,10 +73,13 @@ function love.update(dt)
 
   -- Player control
   local dir = new(Vec) {}
+  local half_screen = love.graphics.getWidth()
 
   for key,control_dir in pairs(CONTROLS) do
     if love.keyboard.isDown(key) then
-      dir:translate(control_dir)
+      if not _player:screen_limit() then
+        dir:translate(control_dir)
+      end
     end
   end
 
@@ -93,6 +96,10 @@ function love.draw()
   love.graphics.print(_player.health, 370, 10)
   if _player.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)
+    love.graphics.print('Press space to continue', W/2 -80, H/2 + 20)
+    if love.keyboard.isDown('space') then
+      love.load()
+    end
   end
   for _,entity in next, _entities do
     entity:draw()
