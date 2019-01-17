@@ -94,6 +94,7 @@ end
 function love.draw()
   love.graphics.print(_objects_on_screen, 10, 10)
   love.graphics.print(_player.health, 370, 10)
+
   if _player.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)
     love.graphics.print('Press space to continue', W/2 -80, H/2 + 20)
@@ -101,6 +102,7 @@ function love.draw()
       love.load()
     end
   end
+
   for _,entity in next, _entities do
     entity:draw()
   end
