@@ -1,8 +1,9 @@
 
 return new 'spec' {
   type = 'bullet',
-  health = 1000,
+  health = 5,
   speed = 600,
+  damage = 5,
   firerate = 0,
   bullet = nil,
   hide_on_die = false,
