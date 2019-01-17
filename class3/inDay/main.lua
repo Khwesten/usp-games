@@ -27,6 +27,9 @@ local _easy_enemy_timer
 local _kamikaze_enemy_timer
 
 function love.load()
+  see_collision_area = false
+  default_color = { 1, 1, 1 }
+
   W, H = love.graphics.getDimensions()
 
   _ais = {}
@@ -150,4 +153,8 @@ function remove_entity(entity)
   _entities[entity.id] = nil
 
   _objects_on_screen = _objects_on_screen - 1
+end
+
+function set_default_color()
+  love.graphics.setColor(default_color)
 end
