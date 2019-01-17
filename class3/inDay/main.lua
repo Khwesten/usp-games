@@ -91,9 +91,11 @@ end
 function love.draw()
   love.graphics.print(_objects_on_screen, 10, 10)
   love.graphics.print(_player.health, 370, 10)
+
   if _player.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)
   end
+
   for _,entity in next, _entities do
     entity:draw()
   end
