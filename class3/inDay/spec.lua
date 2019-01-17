@@ -5,6 +5,7 @@ local Spec = new(Object) {
   speed = 100,
   firerate = 0,
   bullet = nil,
+  damage = 0,
   bullet_direction = { 0, 0 },
   bullet_cooldown = 1,
   view = {
