@@ -21,6 +21,7 @@
 -- )
 
 require 'common'
+require 'score'
 local Entity = require 'entity'
 
 local _easy_enemy_timer
@@ -29,7 +30,8 @@ local _kamikaze_enemy_timer
 function love.load()
   game_debug_mode = true
   default_color = { 1, 1, 1 }
-  player_score = 0
+
+  score = new(Score) {}
 
   W, H = love.graphics.getDimensions()
 
@@ -79,11 +81,7 @@ function love.draw()
     love.graphics.print(_objects_on_screen, 10, H - 20)
   end
 
-  font = love.graphics.getFont()
-  string_score = 'score: ' .. player_score
-  player_score_graphic = love.graphics.newText(font, string_score)
-  width_player_score = player_score_graphic:getWidth()
-  love.graphics.print(string_score, W - (width_player_score + 20), 10)
+  score:print()
 
   if _player.spec.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)

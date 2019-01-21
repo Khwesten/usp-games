@@ -62,7 +62,7 @@ function Entity:update(entities, dt)
       end
 
       if entity.type == 'enemy' then
-        player_score = player_score + 1
+        score:add_one()
       end
     end
 
