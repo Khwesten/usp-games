@@ -54,7 +54,7 @@ function Entity:update(entities, dt)
         remove_entity(entity)
       end
 
-      if self.type == 'bullet' and not entity.type == 'bullet'
+      if self.type == 'bullet' and entity.type ~= 'bullet'
         then remove_entity(self)
       end
     end
