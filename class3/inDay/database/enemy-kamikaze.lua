@@ -1,10 +1,10 @@
 
 return new 'spec' {
   type = 'enemy',
-  health = 10,
-  speed = 300,
+  health = 20,
+  speed = 200,
   damage = 30,
-  firerate = 7,
+  firerate = 6,
   bullet = 'arc-bullet',
   bullet_direction = { 0, 1 },
   bullet_cooldown = 2,

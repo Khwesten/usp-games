@@ -91,7 +91,7 @@ function Entity:screen_limit(direction)
 end
 
 function Entity:check_collision(entity)
-  if entity == nil or self.id == entity.id then
+  if entity == nil or self.id == entity.id or self.type == entity.type then
     return false
   end
 
