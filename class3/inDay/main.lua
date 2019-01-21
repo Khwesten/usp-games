@@ -79,8 +79,11 @@ function love.draw()
     love.graphics.print(_objects_on_screen, 10, H - 20)
   end
 
-  love.graphics.print('score: ' .. player_score, 10, 10)
-  love.graphics.print(_player.spec.health, 370, 10)
+  font = love.graphics.getFont()
+  string_score = 'score: ' .. player_score
+  player_score_graphic = love.graphics.newText(font, string_score)
+  width_player_score = player_score_graphic:getWidth()
+  love.graphics.print(string_score, W - (width_player_score + 20), 10)
 
   if _player.spec.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)
