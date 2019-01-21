@@ -27,8 +27,9 @@ local _easy_enemy_timer
 local _kamikaze_enemy_timer
 
 function love.load()
-  see_collision_area = false
+  game_debug_mode = true
   default_color = { 1, 1, 1 }
+  player_score = 0
 
   W, H = love.graphics.getDimensions()
 
@@ -74,7 +75,11 @@ function love.update(dt)
 end
 
 function love.draw()
-  love.graphics.print(_objects_on_screen, 10, 10)
+  if game_debug_mode then
+    love.graphics.print(_objects_on_screen, 10, H - 20)
+  end
+
+  love.graphics.print('score: ' .. player_score, 10, 10)
   love.graphics.print(_player.spec.health, 370, 10)
 
   if _player.spec.health <= 0 then
