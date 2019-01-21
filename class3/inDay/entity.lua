@@ -50,12 +50,19 @@ function Entity:update(entities, dt)
 
   for _,entity in next, entities do
     if self:check_collision(entity) then
+      self.spec.health = self.spec.health - entity.spec.damage
+      entity.spec.health = entity.spec.health - self.spec.damage
+
       if entity.spec.hide_on_die and entity.spec.health <= 0 then
         remove_entity(entity)
       end
 
-      if self.type == 'bullet' and entity.type ~= 'bullet'
-        then remove_entity(self)
+      if self.type == 'bullet' and entity.type ~= 'bullet' then
+        remove_entity(self)
+      end
+
+      if entity.type == 'enemy' then
+        score:add_one()
       end
     end
 
@@ -84,7 +91,7 @@ function Entity:screen_limit(direction)
 end
 
 function Entity:check_collision(entity)
-  if entity == nil or self.id == entity.id then
+  if entity == nil or self.id == entity.id or self.type == entity.type then
     return false
   end
 
@@ -99,9 +106,6 @@ function Entity:check_collision(entity)
   local collided = (x1 - x2)^2 + (y2 - y1)^2 <= (r2 + r1)^2
 
   if collided then
-    self.spec.health = self.spec.health - entity.spec.damage
-    entity.spec.health = entity.spec.health - self.spec.damage
-
     return true
   end
 
@@ -121,7 +125,7 @@ function Entity:draw()
 
   set_default_color()
 
-  if see_collision_area then
+  if game_debug_mode then
     g.push()
     g.translate(self.pos:get())
     g.setColor(area_collision.color)
