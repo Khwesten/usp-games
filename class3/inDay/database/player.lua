@@ -2,6 +2,7 @@
 return new 'spec' {
   type = 'player',
   health = 100,
+  maxHealth = 100,
   speed = 300,
   damage = 50,
   firerate = 10,

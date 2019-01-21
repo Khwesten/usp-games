@@ -22,6 +22,7 @@
 
 require 'common'
 local Entity = require 'entity'
+local HealthBar = require 'healthBar'
 
 local _easy_enemy_timer
 local _kamikaze_enemy_timer
@@ -74,8 +75,7 @@ function love.update(dt)
 end
 
 function love.draw()
-  love.graphics.print(_objects_on_screen, 10, 10)
-  love.graphics.print(_player.spec.health, 370, 10)
+  love.graphics.print(_objects_on_screen, 10, 40)
 
   if _player.spec.health <= 0 then
     love.graphics.print('GAME OVER', W/2 - 40, H/2)
@@ -89,6 +89,8 @@ function love.draw()
   for _,entity in next, _entities do
     entity:draw()
   end
+
+  HealthBar(_player.spec.health, _player.spec.maxHealth)
 end
 
 function ai_thinking()

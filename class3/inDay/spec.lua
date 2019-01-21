@@ -2,6 +2,7 @@
 local Spec = new(Object) {
   type = 'spec',
   health = 50,
+  maxHealth = 50,
   speed = 100,
   firerate = 0,
   bullet = nil,
