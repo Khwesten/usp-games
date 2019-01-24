@@ -40,11 +40,11 @@ function Entity:update(entities, dt)
     if love.keyboard.isDown('space') and self.id == _player.id then
       new_entity.pos:set(self.pos.x, self.pos.y + self.spec.bullet_start)
       new_entity:setDirection(new(Vec) (self.spec.bullet_direction))
-      add_entity(new_entity)
+      game:add_entity(new_entity)
     elseif self.id ~= _player.id then
       new_entity.pos:set(self.pos.x, self.pos.y + self.spec.bullet_start)
       new_entity:setDirection(new(Vec) (self.spec.bullet_direction))
-      add_entity(new_entity)
+      game:add_entity(new_entity)
     end
   end
 
@@ -54,11 +54,11 @@ function Entity:update(entities, dt)
       entity.spec.health = entity.spec.health - self.spec.damage
 
       if entity.spec.hide_on_die and entity.spec.health <= 0 then
-        remove_entity(entity)
+        game:remove_entity(entity)
       end
 
       if self.type == 'bullet' and entity.type ~= 'bullet' then
-        remove_entity(self)
+        game:remove_entity(self)
       end
 
       if entity.type == 'enemy' then
@@ -67,7 +67,7 @@ function Entity:update(entities, dt)
     end
 
     if entity:out_of_screen() then
-      remove_entity(entity)
+      game:remove_entity(entity)
     end
   end
 end
@@ -125,7 +125,7 @@ function Entity:draw()
 
   set_default_color()
 
-  if game_debug_mode then
+  if game.debug_mode then
     g.push()
     g.translate(self.pos:get())
     g.setColor(area_collision.color)

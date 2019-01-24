@@ -16,4 +16,5 @@ Object = new { } { }
 
 Vec = require 'common.vec'
 Score = require 'score'
+Game = require 'game'
 
