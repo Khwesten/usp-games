@@ -32,8 +32,4 @@ function Game:entities_size()
   return count
 end
 
-function Game:entities_on_screen()
-  return #self.entities
-end
-
 return Game
