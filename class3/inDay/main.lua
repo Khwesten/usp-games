@@ -1,28 +1,8 @@
-json = require 'dkjson'
-debuggee = require 'vscode-debuggee'
-startResult, breakerType = debuggee.start(json)
-
-print('debuggee start ->', startResult, breakerType)
-
-xpcall(
-  function()
-    -- Code to actually run
-    local a = 1 + nil
-  end,
-  function(e)
-    if debuggee.enterDebugLoop(1, e) then
-      -- ok
-    else
-      -- If the debugger is not attached, enter here.
-      print(e)
-      print(debug.traceback())
-    end
-  end
-)
-
 require 'common'
 require 'score'
 require 'game'
+require 'vscode_debug'
+
 local Entity = require 'entity'
 local HealthBar = require 'healthBar'
 
@@ -37,6 +17,7 @@ local CONTROLS = {
 }
 
 function love.load()
+  debuggee.poll()
   game = new(Game) {}
   score = new(Score) {}
   default_color = { 1, 1, 1 }
