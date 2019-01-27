@@ -16,11 +16,18 @@ local CONTROLS = {
   right = new(Vec) { 1, 0 },
 }
 
+local bgElements = {
+  love.graphics.newImage("images/Stars-Nebulae/Nebula1.png"),
+  love.graphics.newImage("images/Stars-Nebulae/Nebula2.png"),
+  love.graphics.newImage("images/Stars-Nebulae/Nebula3.png")
+}
+
 function love.load()
   debuggee.poll()
   game = new(Game) {}
   score = new(Score) {}
   default_color = { 1, 1, 1 }
+  count = 1
 
   W, H = love.graphics.getDimensions()
 
@@ -29,7 +36,10 @@ function love.load()
 
   _player = Entity.load 'player'
   _player.pos:set(W/2, 9*H/10)
-
+  _background = love.graphics.newImage("images/Stars-Nebulae/Stars.png")
+  _background_element = bgElements[count]
+  background_y = 0
+  element_y = 0
   game:add_entity(_player)
 end
 
@@ -54,12 +64,18 @@ function love.update(dt)
   player_control()
 
   update_entities(dt)
+
+  update_bg_elements(dt)
 end
 
 function love.draw()
   if game.debug_mode then
     love.graphics.print(game:entities_size(), 10, H - 20)
   end
+
+    love.graphics.draw(_background, 0, background_y)
+    love.graphics.draw(_background, 0, background_y - _background:getHeight())
+    love.graphics.draw(_background_element, - count * 120, element_y)
 
   score:print()
 
@@ -77,6 +93,7 @@ function love.draw()
   end
 
   HealthBar(_player.spec.health, _player.spec.maxHealth)
+  set_default_color()
 end
 
 function ai_thinking()
@@ -95,6 +112,24 @@ function player_control()
   end
 
   _player:setDirection(dir)
+end
+
+function update_bg_elements(dt)
+  background_y = background_y + (50 * dt)
+  element_y = element_y + (30 * dt)
+
+  if background_y > love.graphics.getHeight() then
+    background_y = -(_background:getHeight() - H)
+  end
+
+  if element_y > love.graphics.getHeight() then
+    count = count + 1
+    element_y = - (_background_element:getHeight() + 100)
+    _background_element = bgElements[count]
+    if count == 3 then
+      count = 0
+    end
+  end
 end
 
 function update_entities(dt)
