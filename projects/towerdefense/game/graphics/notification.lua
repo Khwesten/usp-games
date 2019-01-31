@@ -14,10 +14,13 @@ function Notification:init()
 end
 
 function Notification:update(dt)
-  self.position.y = self.position.y - self.speed*dt
-  self.timer = self.timer - dt
-  if self.timer <= 0 then
-    self:destroy()
+  if game_status.text ~= "GAME OVER!" then
+    self.position.y = self.position.y - self.speed*dt
+    self.timer = self.timer - dt
+
+    if self.timer <= 0 then
+      self:destroy()
+    end
   end
 end
 

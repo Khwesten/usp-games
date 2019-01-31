@@ -1,7 +1,8 @@
-
 local EnemySprite = new 'graphics.sprite' {
   spec = nil
 }
+
+local frame = 1
 
 function EnemySprite:init()
   assert(self.spec)
@@ -13,7 +14,20 @@ function EnemySprite:init()
 end
 
 function EnemySprite:update(dt)
-  self.position.x = self.position.x - 1
+  self.filename = "cruncher/frame_"..frame
+  if game_status.text ~= "GAME OVER!" then
+    if self.position.x == 410 then
+      game_status.text = "GAME OVER!"
+      self.graphics:add('gui', game_status)
+    else
+      self.position.x = self.position.x - 1
+    end
+  end
+  if frame == 6 then
+    frame = 1
+  else
+    frame = frame + 1
+  end
 end
 
 return EnemySprite

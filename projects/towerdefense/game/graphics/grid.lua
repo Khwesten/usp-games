@@ -77,18 +77,20 @@ function Grid:isEmpty(i, j)
   return not self.map[i][j]
 end
 
-function Grid:put(i, j, object)
-  self.map[i][j] = object
+function Grid:put(i, j, object, type)
   self.graphics:add('entities', object)
   object.position = self.position
                   + new(Vec) { j - 0.5, i - 0.5 } * self.tilesize
-  local not_pos = new(Vec) {object.position.x,
-                            object.position.y - self.tilesize/2}
-  local notification = new 'graphics.notification' {
-    position = not_pos,
-    text = "Tower Built! "
-  }
-  self.graphics:add('fx', notification)
+  if type == "tower" then
+    self.map[i][j] = object
+    local not_pos = new(Vec) {object.position.x,
+                              object.position.y - self.tilesize/2}
+    local notification = new 'graphics.notification' {
+      position = not_pos,
+      text = "Tower Built! "
+    }
+    self.graphics:add('fx', notification)
+  end
 end
 
 return Grid
