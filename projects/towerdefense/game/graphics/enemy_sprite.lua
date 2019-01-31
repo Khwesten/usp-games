@@ -12,5 +12,9 @@ function EnemySprite:init()
   self.box = new(Box) { -hotspot.x, w, -hotspot.y, h }
 end
 
+function EnemySprite:update(dt)
+  self.position.x = self.position.x - 1
+end
+
 return EnemySprite
 

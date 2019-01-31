@@ -8,7 +8,8 @@ local Gameplay = new 'state.base' {
   buy_buttons = nil,
   selected = 1,
   page = 1,
-  page_num = 1
+  page_num = 1,
+  timer = 0
 }
 
 function Gameplay:onEnter(graphics)
@@ -20,7 +21,6 @@ function Gameplay:onEnter(graphics)
   self:createArrowButtons()
   self:createCounter()
   self:changeTowers(1)
-  self:createEnemy(1, 1)
 end
 
 function Gameplay:loadTowerSpecs()
@@ -40,10 +40,11 @@ end
 
 function Gameplay:createEnemy(i, j)
   local enemy = new 'graphics.enemy_sprite' {
-    spec = self.enemy_specs[1] ,
-    grid = self.grid
-  }
-  self.grid:put(i, j, enemy)
+      spec = self.enemy_specs[1] ,
+      grid = self.grid
+    }
+    self.grid:put(i, 12, enemy)
+
   -- self.map[i][j] = enemy
   -- self.graphics:add('entities', enemy)
   -- enemy.position = self.position
@@ -128,7 +129,11 @@ function Gameplay:selectTower(i)
 end
 
 function Gameplay:onUpdate(dt)
-  -- Nada por enquanto
+  self.timer = self.timer + dt
+  if self.timer > 5 then
+    self:createEnemy(love.math.random(1, 6), 12)
+    self.timer = self.timer - 5
+  end
 end
 
 return Gameplay
