@@ -91,7 +91,6 @@ function Grid:put(i, j, object, type)
     }
     self.graphics:add('fx', notification)
   else
-    object.power = 10
     object.grid_row = i
     object.grid_column = j
   end

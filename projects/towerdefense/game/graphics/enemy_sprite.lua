@@ -18,7 +18,7 @@ function EnemySprite:update(dt)
   self:updateFrame()
   empty_position = self.grid:isEmpty(self.grid_row, self.grid_column - 1)
   if game_status.status ~= "GAME OVER!" then
-    if self.position.x == 410 then
+    if self.position.x <= 410 then
       self:gameOver()
     else
       if empty_position then
@@ -28,7 +28,7 @@ function EnemySprite:update(dt)
         else
           aux = aux + 1
         end
-        self.position.x = self.position.x - 1
+        self.position.x = self.position.x - (self.spec.speed * dt)
       else
         self:applyDamage()
       end
@@ -37,7 +37,7 @@ function EnemySprite:update(dt)
 end
 
 function EnemySprite:applyDamage( )
-  enemy = self.grid:getEntity(self.grid_row, self.grid_column - 1
+  enemy = self.grid:getEntity(self.grid_row, self.grid_column - 1)
   local not_pos = new(Vec) {self.position.x,
                               self.position.y - 1}
   local notification = new 'graphics.notification' {
