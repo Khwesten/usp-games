@@ -12,6 +12,8 @@ function EnemySprite:init()
   local w,h = self.image:getDimensions()
   local hotspot = self:getHotspot()
   self.box = new(Box) { -hotspot.x, w, -hotspot.y, h }
+  self.currentHealth = self.spec.currentHealth
+  self.maxHealth = self.spec.maxHealth
 end
 
 function EnemySprite:update(dt)

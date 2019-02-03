@@ -9,6 +9,8 @@ return {
   speed = 40,
   description = '"simple robot"',
   grid_row = nil,
-  grid_column = nil
+  grid_column = nil,
+  currentHealth = 50,
+  maxHealth = 50,
 }
 

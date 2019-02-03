@@ -35,7 +35,7 @@ mecânicas estejam funcionando antes.
 2. Mostrar uma tela de derrota
 
 
-[ ] Vida das torres
+[ X ] Vida das torres
 
 1. Torres possuem vida atual e máxima
 

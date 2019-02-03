@@ -6,5 +6,7 @@ return {
   power = 20,
   cost = 30,
   description = "Sentry, comin' up",
+  currentHealth = 50,
+  maxHealth = 50,
 }
 
