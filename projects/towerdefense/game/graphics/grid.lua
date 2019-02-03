@@ -90,6 +90,16 @@ function Grid:put(i, j, object, type)
       text = "Tower Built! "
     }
     self.graphics:add('fx', notification)
+  else
+    object.power = 10
+    object.grid_row = i
+    object.grid_column = j
+  end
+end
+
+function Grid:getEntity(i, j)
+  if not self:isEmpty(i, j) then
+    return self.map[i][j]
   end
 end
 

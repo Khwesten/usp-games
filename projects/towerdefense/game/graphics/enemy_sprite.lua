@@ -3,6 +3,7 @@ local EnemySprite = new 'graphics.sprite' {
 }
 
 local frame = 1
+local aux = 1
 
 function EnemySprite:init()
   assert(self.spec)
@@ -14,21 +15,51 @@ function EnemySprite:init()
 end
 
 function EnemySprite:update(dt)
-  self.filename = "cruncher/frame_"..frame
+  self:updateFrame()
+  empty_position = self.grid:isEmpty(self.grid_row, self.grid_column - 1)
   if game_status.status ~= "GAME OVER!" then
     if self.position.x == 410 then
-      game_status.status = "GAME OVER!"
-      game_status.duration = (love.timer.getTime() - start) / 60
-      self.graphics:add('gamestatus', game_status)
+      self:gameOver()
     else
-      self.position.x = self.position.x - 1
+      if empty_position then
+        if aux == 60 then
+          self.grid_column = self.grid_column - 1
+          aux = 1
+        else
+          aux = aux + 1
+        end
+        self.position.x = self.position.x - 1
+      else
+        self:applyDamage()
+      end
     end
-    if frame == 6 then
+  end
+end
+
+function EnemySprite:applyDamage( )
+  enemy = self.grid:getEntity(self.grid_row, self.grid_column - 1
+  local not_pos = new(Vec) {self.position.x,
+                              self.position.y - 1}
+  local notification = new 'graphics.notification' {
+    position = not_pos,
+    text = "-"..self.power.." damage"
+  }
+  self.graphics:add('fx', notification)
+end
+
+function EnemySprite:updateFrame( )
+  self.filename = "cruncher/frame_"..frame
+  if frame == 6 then
       frame = 1
     else
       frame = frame + 1
     end
-  end
+end
+
+function EnemySprite:gameOver( )
+  game_status.status = "GAME OVER!"
+  game_status.duration = (love.timer.getTime() - start) / 60
+  self.graphics:add('gamestatus', game_status)
 end
 
 return EnemySprite

@@ -7,5 +7,7 @@ return {
   cost = 0,
   value = 10,
   description = "cruncher robot",
+  grid_row = nil,
+  grid_column = nil
 }
 
