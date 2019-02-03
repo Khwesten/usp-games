@@ -119,7 +119,7 @@ constante (e são destruídos se saem da tela)
 3. Quando projéteis disparados por uma torre acertam um inimigo, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de destruí-los invariavelmente)
 
 
-[ ] Dinheiro
+[ X ] Dinheiro
 
 1. Você gasta dinheiro quando constrói uma torre
 

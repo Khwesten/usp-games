@@ -31,6 +31,7 @@ function EnemySprite:update(dt)
         self.position.x = self.position.x - (self.spec.speed * dt)
       else
         self:applyDamage()
+        self:killEnemy() -- Esta aqui apenas para testar o dinheiro
       end
     end
   end
@@ -38,11 +39,12 @@ end
 
 function EnemySprite:applyDamage( )
   enemy = self.grid:getEntity(self.grid_row, self.grid_column - 1)
+
   local not_pos = new(Vec) {self.position.x,
                               self.position.y - 1}
   local notification = new 'graphics.notification' {
     position = not_pos,
-    text = "-"..self.power.." damage"
+    text = "-"..self.spec.power.." damage"
   }
   self.graphics:add('fx', notification)
 end
@@ -60,6 +62,11 @@ function EnemySprite:gameOver( )
   game_status.status = "GAME OVER!"
   game_status.duration = (love.timer.getTime() - start) / 60
   self.graphics:add('gamestatus', game_status)
+end
+
+function EnemySprite:killEnemy( )
+  self.gameplay.counter.change = self.spec.value
+  self:destroy()
 end
 
 return EnemySprite

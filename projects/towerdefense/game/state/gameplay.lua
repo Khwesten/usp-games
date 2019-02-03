@@ -48,7 +48,8 @@ end
 function Gameplay:createEnemy(i, j)
   local enemy = new 'graphics.enemy_sprite' {
       spec = self.enemy_specs[1] ,
-      grid = self.grid
+      grid = self.grid,
+      gameplay = self
     }
     if count < 4 then
       count = count + 1
@@ -114,7 +115,10 @@ function Gameplay:buildTower(i, j)
     spec = spec,
     grid = self.grid
   }
-  self.grid:put(i, j, tower, "tower")
+  if self.counter.value >= tower.spec.cost then
+    self.counter.change = - tower.spec.cost
+    self.grid:put(i, j, tower, "tower")
+  end
 end
 
 function Gameplay:selectTower(i)

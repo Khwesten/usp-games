@@ -81,7 +81,7 @@ function Grid:put(i, j, object, type)
   self.graphics:add('entities', object)
   object.position = self.position
                   + new(Vec) { j - 0.5, i - 0.5 } * self.tilesize
-  if type == "tower" then
+  if object.spec.type == "tower" then
     self.map[i][j] = object
     local not_pos = new(Vec) {object.position.x,
                               object.position.y - self.tilesize/2}
