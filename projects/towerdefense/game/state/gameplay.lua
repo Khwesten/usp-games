@@ -5,6 +5,7 @@ game_status = new 'graphics.game_status' {
   text = 'game play'
 }
 
+local count = 0
 local Gameplay = new 'state.base' {
   graphics = nil,
   grid = nil,
@@ -49,6 +50,9 @@ function Gameplay:createEnemy(i, j)
       spec = self.enemy_specs[1] ,
       grid = self.grid
     }
+    if count < 4 then
+      count = count + 1
+    end
     self.grid:put(i, 12, enemy, "enemy")
 end
 
@@ -126,7 +130,7 @@ function Gameplay:onUpdate(dt)
   self.timer = self.timer + dt
   if self.timer > 5 and game_status.status ~= "GAME OVER!" then
     self:createEnemy(love.math.random(1, 6), 12)
-    self.timer = self.timer - 5
+    self.timer = (self.timer + count) - 5
   end
 end
 
