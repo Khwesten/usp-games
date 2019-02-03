@@ -6,6 +6,7 @@ local Sprite = new 'graphics.drawable' {
 
 function Sprite:loadImage()
   self.image = love.graphics.newImage("assets/" .. self.filename .. ".png")
+  self.image:setFilter('nearest', 'nearest')
 end
 
 function Sprite:init()

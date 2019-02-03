@@ -14,5 +14,14 @@ function TowerSprite:init()
   self.maxHealth = self.spec.maxHealth
 end
 
+function TowerSprite:shoot()
+  local bullet = new 'graphics.bullet_sprite' {
+    spec = require(self.spec.bullet),
+    grid = self.grid
+  }
+  self.graphics:add('fx', bullet)
+  bullet.position = self.position
+end
+
 return TowerSprite
 

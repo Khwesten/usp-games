@@ -30,18 +30,18 @@ mecânicas estejam funcionando antes.
 
 **Requer [Inimigos](#inimigos)**
 
-[ ] 1. Se algum inimigo chegar na extremidade esquerda, você perde
+[x] 1. Se algum inimigo chegar na extremidade esquerda, você perde
 
-[ ] 2. Mostrar uma tela de derrota
+[x] 2. Mostrar uma tela de derrota
 
 
 [ X ] Vida das torres
 
-[ ] 1. Torres possuem vida atual e máxima
+[x] 1. Torres possuem vida atual e máxima
 
-[ ] 2. Toda torre começa com sua vida atual igual a sua máxima
+[x] 2. Toda torre começa com sua vida atual igual a sua máxima
 
-[ ] 3. A vida máxima de cada torre deve ser especificada no banco de dados
+[x] 3. A vida máxima de cada torre deve ser especificada no banco de dados
 
 
 [ ] Destruição de torres
@@ -58,7 +58,7 @@ atual da torre
 
 [ ] Disparos
 
-[ ] 1. Torres podem disparar projéteis
+[x] 1. Torres podem disparar projéteis
 
 [ ] 2. Cada torre tem uma taxa de disparo (*firerate*) com a qual dispara projéteis
 
