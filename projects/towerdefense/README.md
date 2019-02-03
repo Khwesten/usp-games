@@ -17,7 +17,7 @@ Cada mecânicas implementada vale meio (0,5) ponto, e você pode fazer quantas
 conseguir (a soma total passa de dez). MAS várias mecânicas precisam que outras
 mecânicas estejam funcionando antes.
 
-### Inimigos
+[ X ] Inimigos
 
 [x] 1. Criar um tipo "Enemy" que representa os inimigos tentando invadir o jogador
 
@@ -25,7 +25,8 @@ mecânicas estejam funcionando antes.
 
 [x] 3. Inimigos se movem pra esquerda em linha reta
 
-### Derrota
+
+[ X ] Derrota
 
 **Requer [Inimigos](#inimigos)**
 
@@ -33,7 +34,8 @@ mecânicas estejam funcionando antes.
 
 [ ] 2. Mostrar uma tela de derrota
 
-### Vida das torres
+
+[ X ] Vida das torres
 
 [ ] 1. Torres possuem vida atual e máxima
 
@@ -41,7 +43,8 @@ mecânicas estejam funcionando antes.
 
 [ ] 3. A vida máxima de cada torre deve ser especificada no banco de dados
 
-### Destruição de torres
+
+[ ] Destruição de torres
 
 **Requer [Inimigos](#inimigos) e [Vida das torres](#vida-das-torres)**
 
@@ -52,7 +55,8 @@ atual da torre
 
 [ ] 3. Torres são destruídas quando ficam com zero de vida atual
 
-### Disparos
+
+[ ] Disparos
 
 [ ] 1. Torres podem disparar projéteis
 
@@ -63,13 +67,15 @@ constante (e são destruídos se saem da tela)
 
 [ ] 4. A taxa de disparo de cada torre deve ser determinada no banco de dados
 
-### Destruição de inimigos
+
+[ ] Destruição de inimigos
 
 **Requer [Inimigos](#inimigos), [Disparos](#disparos)**
 
 [ ] 1. Inimigos atingidos por projéteis são destruídos, a princípio
 
-### Vida dos inimigos
+
+[ ] Vida dos inimigos
 
 **Requer [Destruição de inimigos](#destruição-de-inimigos)**
 
@@ -81,7 +87,8 @@ constante (e são destruídos se saem da tela)
 
 [ ] 4. Se um inimigo ficar com zero ou menos de vida atual, ele é excluído do jogo
 
-### Entidades
+
+[ ] Entidades
 
 **Requer [Vida das torres](#vida-das-torres), [Vida dos inimigos](#vida-dos-inimigos)**
 
@@ -89,7 +96,8 @@ constante (e são destruídos se saem da tela)
 
 [ ] 2. Fazer que ambos sejam subtipos de entidades (*entities*)
 
-### Poder dos inimigos
+
+[ ] Poder dos inimigos
 
 **Requer [Destruição de torres](#destruição-de-torres)**
 
@@ -99,7 +107,8 @@ constante (e são destruídos se saem da tela)
 
 [ ] 3. Quando inimigos encostam em uma torre, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de uma quantidade fixa universal)
 
-### Poder das torres
+
+[ ] Poder das torres
 
 **Requer [Vida dos inimigos](#vida-dos-inimigos)**
 
@@ -109,7 +118,8 @@ constante (e são destruídos se saem da tela)
 
 [ ] 3. Quando projéteis disparados por uma torre acertam um inimigo, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de destruí-los invariavelmente)
 
-### Dinheiro
+
+[ X ] Dinheiro
 
 [ ] 1. Você gasta dinheiro quando constrói uma torre
 
@@ -117,7 +127,8 @@ constante (e são destruídos se saem da tela)
 
 [ ] 3. Você ganha dinheiro quando derrota inimigos
 
-### Custo de torres
+
+[ ] Custo de torres
 
 **Requer [Dinheiro](#dinheiro)**
 
@@ -125,7 +136,8 @@ constante (e são destruídos se saem da tela)
 
 [ ] 2. O custo de uma torre é o valor gasto para construí-la
 
-### Valor dos inimigos
+
+[ ] Valor dos inimigos
 
 **Requer [Dinheiro](#dinheiro)**
 
@@ -133,20 +145,23 @@ constante (e são destruídos se saem da tela)
 
 [ ] 2. A quantidade de dinheito ganha por derrotar um inimigo é determinada pelo seu valor
 
-### Sucatear
+
+[ ] Sucatear
 
 **Requer [Dinheiro](#dinheiro)**
 
 [ ] 1. Você pode clicar com botão direito numa torre para destruir ela e ganhar
 metade do valor de volta
 
-### Progressão
+
+[ X ] Progressão
 
 **Requer [Inimigos](#inimigos)**
 
 [ ] 1. A quantidade de inimigos criados aumenta ao longo do tempo
 
-### Velocidade de inimigos
+
+[ X ] Velocidade de inimigos
 
 **Requer [Inimigos](#inimigos)**
 
@@ -156,7 +171,8 @@ metade do valor de volta
 
 [ ] 3. A velocidade de cada inimigo é determinada no banco de dados
 
-### Mineradoras
+
+[ ] Mineradoras
 
 **Requer [Dinheiro](#dinheiro)**
 
@@ -166,7 +182,8 @@ metade do valor de volta
 
 [ ] 3. A taxa de produção de cada mineradora é determinada no banco de dados
 
-### Movimento lateral
+
+[ ] Movimento lateral
 
 **Requer [Inimigos](#inimigos)**
 
@@ -176,7 +193,8 @@ metade do valor de volta
 
 [ ] 3. A sequência de movimentos de cada inimigo deve ser determinada no banco de dados
 
-### Torres temporárias
+
+[ ] Torres temporárias
 
 [ ] 1. Torres podem ter uma duração, que indica quantos segundos elas ficam em jogo antes de serem destruídas por desgaste
 
@@ -186,7 +204,8 @@ metade do valor de volta
 
 [ ] 4. Uma duração de zero indica que a torre dura pra sempre ou até ser destruída
 
-### Disparos paralizantes
+
+[ ] Disparos paralizantes
 
 **Requer [Poder das torres](#poder-das-torres)**
 
@@ -196,7 +215,8 @@ metade do valor de volta
 
 [ ] 3. Inimigos precisam ter um contador de paralisia que indica por quantos segundos eles estão paralizados, e esse contador diminui com o tempo
 
-## Pontos extras
+
+[ ] Pontos extras
 
 Além das mecânicas, vocês podem ganhar até 1 ponto implementanto novas torres e inimigos para o jogo. Cada nova torre e inimigo vale **no máximo** 0.1 pontos. Para poder valer qualquer coisa, nós precisamos saber que vocês fizeram esse conteúdo!!!! Então coloque em um relatório entregue junto com o projeto uma lista de todos os conteúdos novos que fizeram, caso contrário eles não valerão nada!!!
 

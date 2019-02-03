@@ -5,6 +5,8 @@ game_status = new 'graphics.game_status' {
   text = 'game play'
 }
 
+local spanw_count = 0
+local spanw_rate = 0
 local Gameplay = new 'state.base' {
   graphics = nil,
   grid = nil,
@@ -15,7 +17,7 @@ local Gameplay = new 'state.base' {
   selected = 1,
   page = 1,
   page_num = 1,
-  timer = 0
+  cooldown = 5
 }
 
 function Gameplay:onEnter(graphics)
@@ -47,8 +49,12 @@ end
 function Gameplay:createEnemy(i, j)
   local enemy = new 'graphics.enemy_sprite' {
       spec = self.enemy_specs[1] ,
-      grid = self.grid
+      grid = self.grid,
+      gameplay = self
     }
+    if spanw_rate < (self.cooldown - 1) then
+      spanw_rate = spanw_rate + 1
+    end
     self.grid:put(i, 12, enemy, "enemy")
 end
 
@@ -110,7 +116,10 @@ function Gameplay:buildTower(i, j)
     spec = spec,
     grid = self.grid
   }
-  self.grid:put(i, j, tower, "tower")
+  if self.counter.value >= tower.spec.cost then
+    self.counter.change = - tower.spec.cost
+    self.grid:put(i, j, tower, "tower")
+  end
 end
 
 function Gameplay:selectTower(i)
@@ -123,10 +132,10 @@ function Gameplay:selectTower(i)
 end
 
 function Gameplay:onUpdate(dt)
-  self.timer = self.timer + dt
-  if self.timer > 5 and game_status.status ~= "GAME OVER!" then
+  spanw_count = spanw_count + dt
+  if spanw_count > self.cooldown  and game_status.status ~= "GAME OVER!" then
     self:createEnemy(love.math.random(1, 6), 12)
-    self.timer = self.timer - 5
+    spanw_count = (spanw_count + spanw_rate) - self.cooldown
   end
 end
 

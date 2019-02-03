@@ -81,7 +81,7 @@ function Grid:put(i, j, object, type)
   self.graphics:add('entities', object)
   object.position = self.position
                   + new(Vec) { j - 0.5, i - 0.5 } * self.tilesize
-  if type == "tower" then
+  if object.spec.type == "tower" then
     self.map[i][j] = object
     local not_pos = new(Vec) {object.position.x,
                               object.position.y - self.tilesize/2}
@@ -90,6 +90,15 @@ function Grid:put(i, j, object, type)
       text = "Tower Built! "
     }
     self.graphics:add('fx', notification)
+  else
+    object.grid_row = i
+    object.grid_column = j
+  end
+end
+
+function Grid:getEntity(i, j)
+  if not self:isEmpty(i, j) then
+    return self.map[i][j]
   end
 end
 

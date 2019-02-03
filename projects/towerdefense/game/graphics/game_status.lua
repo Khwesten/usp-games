@@ -23,7 +23,7 @@ function GameStatus:onDraw()
   font_loader:use(self.font)
   g.print(self.status, tx, ty)
   font = font_loader:use("bold", 14)
-  g.print('Enimigos mortos: '..self.enemy_kills, tx + 10, ty + 30)
+  -- g.print('Enimigos mortos: '..self.enemy_kills, tx + 10, ty + 30)
   g.print(('Duração da partida: %.2f minutos'):format(self.duration), tx - 50 , ty + 50)
 end
 
