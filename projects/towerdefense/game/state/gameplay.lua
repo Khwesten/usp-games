@@ -1,7 +1,8 @@
 W, H = love.graphics.getDimensions()
-game_status = new 'graphics.notification' {
-      position = new(Vec) {W/2 , H/2},
-      text = 'game play'
+start = love.timer.getTime()
+
+game_status = new 'graphics.game_status' {
+  text = 'game play'
 }
 
 local Gameplay = new 'state.base' {
@@ -123,7 +124,7 @@ end
 
 function Gameplay:onUpdate(dt)
   self.timer = self.timer + dt
-  if self.timer > 5 and game_status.text ~= "GAME OVER!" then
+  if self.timer > 5 and game_status.status ~= "GAME OVER!" then
     self:createEnemy(love.math.random(1, 6), 12)
     self.timer = self.timer - 5
   end
