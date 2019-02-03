@@ -15,7 +15,7 @@ function love.load()
 
   -- Cria gerenciador de gráficos
   _graphics = new 'graphics' {
-    layers = { 'bg', 'entities', 'gui', 'fx' }
+    layers = { 'bg', 'entities', 'gui', 'fx', 'gamestatus' }
   }
   love.graphics.setBackgroundColor(.1, .1, .1)
 

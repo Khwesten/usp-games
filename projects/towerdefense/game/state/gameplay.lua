@@ -1,3 +1,9 @@
+W, H = love.graphics.getDimensions()
+start = love.timer.getTime()
+
+game_status = new 'graphics.game_status' {
+  text = 'game play'
+}
 
 local Gameplay = new 'state.base' {
   graphics = nil,
@@ -43,19 +49,7 @@ function Gameplay:createEnemy(i, j)
       spec = self.enemy_specs[1] ,
       grid = self.grid
     }
-    self.grid:put(i, 12, enemy)
-
-  -- self.map[i][j] = enemy
-  -- self.graphics:add('entities', enemy)
-  -- enemy.position = self.position
-  --                 + new(Vec) { j - 0.5, i - 0.5 } * self.tilesize
-  -- local not_pos = new(Vec) {enemy.position.x,
-  --                           enemy.position.y - self.tilesize/2}
-  -- local notification = new 'graphics.notification' {
-  --   position = not_pos,
-  --   text = "Enemy spawned!"
-  -- }
-  -- self.graphics:add('fx', notification)
+    self.grid:put(i, 12, enemy, "enemy")
 end
 
 function Gameplay:changeTowers()
@@ -116,7 +110,7 @@ function Gameplay:buildTower(i, j)
     spec = spec,
     grid = self.grid
   }
-  self.grid:put(i, j, tower)
+  self.grid:put(i, j, tower, "tower")
 end
 
 function Gameplay:selectTower(i)
@@ -130,7 +124,7 @@ end
 
 function Gameplay:onUpdate(dt)
   self.timer = self.timer + dt
-  if self.timer > 5 then
+  if self.timer > 5 and game_status.status ~= "GAME OVER!" then
     self:createEnemy(love.math.random(1, 6), 12)
     self.timer = self.timer - 5
   end
