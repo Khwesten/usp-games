@@ -12,43 +12,48 @@ function EnemySprite:init()
   local w,h = self.image:getDimensions()
   local hotspot = self:getHotspot()
   self.box = new(Box) { -hotspot.x, w, -hotspot.y, h }
-  self.currentHealth = self.spec.currentHealth
+  self.currentHealth = self.spec.maxHealth
   self.maxHealth = self.spec.maxHealth
 end
 
 function EnemySprite:update(dt)
-  self:updateFrame()
-  empty_position = self.grid:isEmpty(self.grid_row, self.grid_column - 1)
+  i = math.floor ((self.position.y + 0.5) / self.grid.tilesize ) - 2
+  j = math.floor ((self.position.x + 0.5) / self.grid.tilesize ) - 5
+
+  empty_position = self.grid:isEmpty(i, j)
   if game_status.status ~= "GAME OVER!" then
     if self.position.x <= 410 then
       self:gameOver()
     else
       if empty_position then
-        self:updateColumn()
         self.position.x = self.position.x - (self.spec.speed * dt)
       else
         self:applyDamage()
-        -- self:killEnemy() -- Esta aqui apenas para testar o dinheiro
       end
     end
   end
 end
 
+
 function EnemySprite:applyDamage( )
-  enemy = self.grid:getEntity(self.grid_row, self.grid_column - 1)
+  tower = self.grid:getEntity(i, j)
   local not_pos = new(Vec) {self.position.x,
-                              self.position.y - 1}
+                              self.position.y - 2}
   local notification = new 'graphics.notification' {
     position = not_pos,
-    text = "-"..self.spec.power.." damage"
+    text = "-"..self.spec.power.." life"
   }
-  enemy.spec.currentHealth = enemy.spec.currentHealth - self.spec.power
+
+  tower.currentHealth = tower.currentHealth - self.spec.power
+  self.currentHealth = self.currentHealth - tower.spec.power
   self.graphics:add('fx', notification)
-  self.position.x = self.position.x + 1
-  if enemy.spec.currentHealth == 0 then
-    pos = new(Vec) { enemy.position }
-    enemy.grid:removeEntity(self.grid_row, self.grid_column - 1)
-    enemy:destroy()
+  self.position.x = self.position.x + 30
+  if tower.currentHealth <= 0 then
+    tower.grid:removeEntity(i, j)
+    tower:destroy()
+  end
+  if self.currentHealth <= 0 then
+    self:killEnemy()
   end
 end
 
@@ -82,4 +87,3 @@ function EnemySprite:updateColumn()
 end
 
 return EnemySprite
-

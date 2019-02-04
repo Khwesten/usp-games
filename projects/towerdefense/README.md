@@ -48,19 +48,19 @@ mecânicas estejam funcionando antes.
 
 **Requer [Inimigos](#inimigos) e [Vida das torres](#vida-das-torres)**
 
-[ X] 1. Quando um inimigo encosta em uma torre, ele reduz uma quantia fixa da vida
+[x] 1. Quando um inimigo encosta em uma torre, ele reduz uma quantia fixa da vida
 atual da torre
 
-[ ] 2. Ao causar dano, inimigos recuam alguns passos
+[x] 2. Ao causar dano, inimigos recuam alguns passos
 
-[ X] 3. Torres são destruídas quando ficam com zero de vida atual
+[x] 3. Torres são destruídas quando ficam com zero de vida atual
 
 
-[ ] Disparos
+[x] Disparos
 
 [x] 1. Torres podem disparar projéteis
 
-[ ] 2. Cada torre tem uma taxa de disparo (*firerate*) com a qual dispara projéteis
+[x] 2. Cada torre tem uma taxa de disparo (*firerate*) com a qual dispara projéteis
 
 [x] 3. Projéteis são só pequenos objetos que se movem para direita à velocidade
 constante (e são destruídos se saem da tela)
@@ -74,19 +74,21 @@ constante (e são destruídos se saem da tela)
 
 [ ] 1. Inimigos atingidos por projéteis são destruídos, a princípio
 
+Obs.: Não conseguimos finalizar a colisão dos disparos com os inimigos, por isso fizemos a aplicação de dano e morte dos inimigos quando eles encostam nas torres
 
-[ ] Vida dos inimigos
+[x] Vida dos inimigos
 
 **Requer [Destruição de inimigos](#destruição-de-inimigos)**
 
-[ ] 1. Inimigos possuem vida atual e máxima
+[x] 1. Inimigos possuem vida atual e máxima
 
-[ ] 2. Todo inimigo começa com sua vida atual igual a sua máxima
+[x] 2. Todo inimigo começa com sua vida atual igual a sua máxima
 
-[ ] 3. A vida máxima de cada inimigo deve ser especificada no banco de dados
+[x] 3. A vida máxima de cada inimigo deve ser especificada no banco de dados
 
-[ ] 4. Se um inimigo ficar com zero ou menos de vida atual, ele é excluído do jogo
+[x] 4. Se um inimigo ficar com zero ou menos de vida atual, ele é excluído do jogo
 
+Obs.: Não conseguimos finalizar a colisão dos disparos com os inimigos, por isso fizemos a aplicação de dano e morte dos inimigos quando eles encostam nas torres
 
 [ ] Entidades
 
@@ -97,24 +99,24 @@ constante (e são destruídos se saem da tela)
 [ ] 2. Fazer que ambos sejam subtipos de entidades (*entities*)
 
 
-[ ] Poder dos inimigos
+[x] Poder dos inimigos
 
 **Requer [Destruição de torres](#destruição-de-torres)**
 
-[ ] 1. Inimigos possuem um valor de poder (*power*)
+[x] 1. Inimigos possuem um valor de poder (*power*)
 
-[ ] 2. Esse valor é determinado pelo banco de dados
+[x] 2. Esse valor é determinado pelo banco de dados
 
-[ ] 3. Quando inimigos encostam em uma torre, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de uma quantidade fixa universal)
+[x] 3. Quando inimigos encostam em uma torre, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de uma quantidade fixa universal)
 
 
 [ ] Poder das torres
 
 **Requer [Vida dos inimigos](#vida-dos-inimigos)**
 
-[ ] 1. Torres possuem um valor de poder (*power*)
+[x] 1. Torres possuem um valor de poder (*power*)
 
-[ ] 2. Esse valor é determinado pelo banco de dados
+[x] 2. Esse valor é determinado pelo banco de dados
 
 [ ] 3. Quando projéteis disparados por uma torre acertam um inimigo, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de destruí-los invariavelmente)
 
@@ -128,11 +130,11 @@ constante (e são destruídos se saem da tela)
 [ X ] 3. Você ganha dinheiro quando derrota inimigos
 
 
-[ X] Custo de torres
+[ X ] Custo de torres
 
 **Requer [Dinheiro](#dinheiro)**
 
-[ X] 1. Toda torre possui um custo
+[ X ] 1. Toda torre possui um custo
 
 [ X ] 2. O custo de uma torre é o valor gasto para construí-la
 
@@ -146,11 +148,11 @@ constante (e são destruídos se saem da tela)
 [ X ] 2. A quantidade de dinheito ganha por derrotar um inimigo é determinada pelo seu valor
 
 
-[ ] Sucatear
+[ X ] Sucatear
 
 **Requer [Dinheiro](#dinheiro)**
 
-[ ] 1. Você pode clicar com botão direito numa torre para destruir ela e ganhar
+[ X ] 1. Você pode clicar com botão direito numa torre para destruir ela e ganhar
 metade do valor de volta
 
 

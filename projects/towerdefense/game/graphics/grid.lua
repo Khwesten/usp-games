@@ -61,6 +61,15 @@ function Grid:onMousePressed(pos, button)
       self.selected_callback(i, j)
     end
   end
+  if button == 2 then
+    local i, j = self:pointToTile(pos)
+    if not self:isEmpty(i, j) then
+      local tower = self.map[i][j]
+      self.gameplay.counter.change = (tower.spec.cost / 2)
+      tower:destroy()
+      self:removeEntity(i, j)
+    end
+  end
   return true
 end
 

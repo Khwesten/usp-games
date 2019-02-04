@@ -10,7 +10,7 @@ function TowerSprite:init()
   local w,h = self.image:getDimensions()
   local hotspot = self:getHotspot()
   self.box = new(Box) { -hotspot.x, w, -hotspot.y, h }
-  self.currentHealth = self.spec.currentHealth
+  self.currentHealth = self.spec.maxHealth
   self.maxHealth = self.spec.maxHealth
   self.firerate = self.spec.firerate
   self.shootingTimer = 0
