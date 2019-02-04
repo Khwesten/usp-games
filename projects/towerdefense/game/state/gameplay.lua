@@ -119,8 +119,8 @@ function Gameplay:buildTower(i, j)
   if self.counter.value >= tower.spec.cost then
     self.counter.change = - tower.spec.cost
     self.grid:put(i, j, tower, "tower")
+    tower:shoot()
   end
-  tower:shoot()
 end
 
 function Gameplay:selectTower(i)
