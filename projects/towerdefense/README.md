@@ -48,12 +48,12 @@ mecânicas estejam funcionando antes.
 
 **Requer [Inimigos](#inimigos) e [Vida das torres](#vida-das-torres)**
 
-[ ] 1. Quando um inimigo encosta em uma torre, ele reduz uma quantia fixa da vida
+[ X] 1. Quando um inimigo encosta em uma torre, ele reduz uma quantia fixa da vida
 atual da torre
 
 [ ] 2. Ao causar dano, inimigos recuam alguns passos
 
-[ ] 3. Torres são destruídas quando ficam com zero de vida atual
+[ X] 3. Torres são destruídas quando ficam com zero de vida atual
 
 
 [ ] Disparos
@@ -121,29 +121,29 @@ constante (e são destruídos se saem da tela)
 
 [ X ] Dinheiro
 
-[ ] 1. Você gasta dinheiro quando constrói uma torre
+[ X ] 1. Você gasta dinheiro quando constrói uma torre
 
-[ ] 2. Você não pode construir uma torre se não tiver dinheiro para tal
+[ X ] 2. Você não pode construir uma torre se não tiver dinheiro para tal
 
-[ ] 3. Você ganha dinheiro quando derrota inimigos
-
-
-[ ] Custo de torres
-
-**Requer [Dinheiro](#dinheiro)**
-
-[ ] 1. Toda torre possui um custo
-
-[ ] 2. O custo de uma torre é o valor gasto para construí-la
+[ X ] 3. Você ganha dinheiro quando derrota inimigos
 
 
-[ ] Valor dos inimigos
+[ X] Custo de torres
 
 **Requer [Dinheiro](#dinheiro)**
 
-[ ] 1. Todo inimigo possui um valor
+[ X] 1. Toda torre possui um custo
 
-[ ] 2. A quantidade de dinheito ganha por derrotar um inimigo é determinada pelo seu valor
+[ X ] 2. O custo de uma torre é o valor gasto para construí-la
+
+
+[ X ] Valor dos inimigos
+
+**Requer [Dinheiro](#dinheiro)**
+
+[ X ] 1. Todo inimigo possui um valor
+
+[ X ] 2. A quantidade de dinheito ganha por derrotar um inimigo é determinada pelo seu valor
 
 
 [ ] Sucatear
