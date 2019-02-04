@@ -20,7 +20,8 @@ function TowerSprite:shoot()
     grid = self.grid
   }
   self.graphics:add('fx', bullet)
-  bullet.position = self.position
+  pos = new(Vec) { self.position.x + 60, self.position.y }
+  bullet.position = pos
 end
 
 return TowerSprite
