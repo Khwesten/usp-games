@@ -8,6 +8,7 @@ return {
   description = '"10/10 would buy again"',
   currentHealth = 100,
   maxHealth = 100,
-  bullet= "database.bullets.energy-ball",
+  bullet = "database.bullets.energy-ball",
+  firerate = 10
 }
 

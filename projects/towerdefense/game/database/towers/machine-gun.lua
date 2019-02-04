@@ -8,6 +8,7 @@ return {
   description = "Sentry, comin' up",
   currentHealth = 50,
   maxHealth = 50,
-  bullet= "database.bullets.energy-ball",
+  bullet = "database.bullets.energy-ball",
+  firerate = 100
 }
 

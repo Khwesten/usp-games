@@ -12,6 +12,16 @@ function TowerSprite:init()
   self.box = new(Box) { -hotspot.x, w, -hotspot.y, h }
   self.currentHealth = self.spec.currentHealth
   self.maxHealth = self.spec.maxHealth
+  self.firerate = self.spec.firerate
+  shootingTimer = 0
+end
+
+function TowerSprite:update(dt)
+	shootingTimer = shootingTimer + dt
+	while shootingTimer > 1 / self.firerate do
+		shootingTimer = shootingTimer - 1 / self.firerate
+		self:shoot()
+	end
 end
 
 function TowerSprite:shoot()
