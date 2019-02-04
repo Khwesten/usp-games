@@ -102,4 +102,8 @@ function Grid:getEntity(i, j)
   end
 end
 
+function Grid:removeEntity(i, j)
+  self.map[i][j] = nil
+end
+
 return Grid

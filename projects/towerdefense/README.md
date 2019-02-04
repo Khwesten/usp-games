@@ -44,7 +44,7 @@ mecânicas estejam funcionando antes.
 3. A vida máxima de cada torre deve ser especificada no banco de dados
 
 
-[ ] Destruição de torres
+[ X ] Destruição de torres
 
 **Requer [Inimigos](#inimigos) e [Vida das torres](#vida-das-torres)**
 
