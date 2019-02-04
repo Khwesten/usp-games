@@ -34,5 +34,9 @@ function TowerSprite:shoot()
   bullet.position = pos
 end
 
+function TowerSprite:destroyTower()
+	self:destroy()
+end
+
 return TowerSprite
 

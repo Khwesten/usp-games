@@ -110,6 +110,17 @@ function Gameplay:createCounter()
   self.graphics:add('gui', self.counter)
 end
 
+function Gameplay:createRecycleButton(tower)
+  self.recycleButton = {}
+  local W,H = love.graphics.getDimensions()
+  self.recycleButton = new 'graphics.button'
+  self.recycleButton.callback = function() 
+    self.counter:add(tower.cost/2)
+    tower:destroyTower()
+  end
+  self.graphics:add('gui', self.recycleButton)
+end
+
 function Gameplay:buildTower(i, j)
   local spec = self.buy_buttons[self.selected].tower_spec
   local tower = new 'graphics.tower_sprite' {
@@ -119,7 +130,7 @@ function Gameplay:buildTower(i, j)
   if self.counter.value >= tower.spec.cost then
     self.counter.change = - tower.spec.cost
     self.grid:put(i, j, tower, "tower")
-    tower:shoot()
+    -- self.createRecycleButton(tower)
   end
 end
 
