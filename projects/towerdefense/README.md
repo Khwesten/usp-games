@@ -158,18 +158,18 @@ metade do valor de volta
 
 **Requer [Inimigos](#inimigos)**
 
-[ ] 1. A quantidade de inimigos criados aumenta ao longo do tempo
+[ X ] 1. A quantidade de inimigos criados aumenta ao longo do tempo
 
 
 [ X ] Velocidade de inimigos
 
 **Requer [Inimigos](#inimigos)**
 
-[ ] 1. Todo inimigo possui uma velocidade (*speed*)
+[ X ] 1. Todo inimigo possui uma velocidade (*speed*)
 
-[ ] 2. Essa velocidade determina a velocidade de movimento dos inimigos
+[ X ] 2. Essa velocidade determina a velocidade de movimento dos inimigos
 
-[ ] 3. A velocidade de cada inimigo é determinada no banco de dados
+[ X ] 3. A velocidade de cada inimigo é determinada no banco de dados
 
 
 [ ] Mineradoras
