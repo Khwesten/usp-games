@@ -13,13 +13,13 @@ function TowerSprite:init()
   self.currentHealth = self.spec.currentHealth
   self.maxHealth = self.spec.maxHealth
   self.firerate = self.spec.firerate
-  shootingTimer = 0
+  self.shootingTimer = 0
 end
 
 function TowerSprite:update(dt)
-	shootingTimer = shootingTimer + dt
-	while shootingTimer > 1 / self.firerate do
-		shootingTimer = shootingTimer - 1 / self.firerate
+	self.shootingTimer = self.shootingTimer + dt
+	while self.shootingTimer > 1 / self.firerate do
+		self.shootingTimer = self.shootingTimer - 1 / self.firerate
 		self:shoot()
 	end
 end

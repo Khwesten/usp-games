@@ -9,6 +9,6 @@ return {
   currentHealth = 100,
   maxHealth = 100,
   bullet = "database.bullets.energy-ball",
-  firerate = 10
+  firerate = 0.4
 }
 
