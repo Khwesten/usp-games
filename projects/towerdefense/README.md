@@ -19,138 +19,138 @@ mecânicas estejam funcionando antes.
 
 [ X ] Inimigos
 
-1. Criar um tipo "Enemy" que representa os inimigos tentando invadir o jogador
+[x] 1. Criar um tipo "Enemy" que representa os inimigos tentando invadir o jogador
 
-2. Inimigos aparecem na margem direita da tela
+[x] 2. Inimigos aparecem na margem direita da tela
 
-3. Inimigos se movem pra esquerda em linha reta
+[x] 3. Inimigos se movem pra esquerda em linha reta
 
 
 [ X ] Derrota
 
 **Requer [Inimigos](#inimigos)**
 
-1. Se algum inimigo chegar na extremidade esquerda, você perde
+[x] 1. Se algum inimigo chegar na extremidade esquerda, você perde
 
-2. Mostrar uma tela de derrota
+[x] 2. Mostrar uma tela de derrota
 
 
 [ X ] Vida das torres
 
-1. Torres possuem vida atual e máxima
+[x] 1. Torres possuem vida atual e máxima
 
-2. Toda torre começa com sua vida atual igual a sua máxima
+[x] 2. Toda torre começa com sua vida atual igual a sua máxima
 
-3. A vida máxima de cada torre deve ser especificada no banco de dados
+[x] 3. A vida máxima de cada torre deve ser especificada no banco de dados
 
 
 [ X ] Destruição de torres
 
 **Requer [Inimigos](#inimigos) e [Vida das torres](#vida-das-torres)**
 
-1. Quando um inimigo encosta em uma torre, ele reduz uma quantia fixa da vida
+[ ] 1. Quando um inimigo encosta em uma torre, ele reduz uma quantia fixa da vida
 atual da torre
 
-2. Ao causar dano, inimigos recuam alguns passos
+[ ] 2. Ao causar dano, inimigos recuam alguns passos
 
-3. Torres são destruídas quando ficam com zero de vida atual
+[ ] 3. Torres são destruídas quando ficam com zero de vida atual
 
 
 [ ] Disparos
 
-1. Torres podem disparar projéteis
+[x] 1. Torres podem disparar projéteis
 
-2. Cada torre tem uma taxa de disparo (*firerate*) com a qual dispara projéteis
+[ ] 2. Cada torre tem uma taxa de disparo (*firerate*) com a qual dispara projéteis
 
-3. Projéteis são só pequenos objetos que se movem para direita à velocidade
+[ ] 3. Projéteis são só pequenos objetos que se movem para direita à velocidade
 constante (e são destruídos se saem da tela)
 
-4. A taxa de disparo de cada torre deve ser determinada no banco de dados
+[ ] 4. A taxa de disparo de cada torre deve ser determinada no banco de dados
 
 
 [ ] Destruição de inimigos
 
 **Requer [Inimigos](#inimigos), [Disparos](#disparos)**
 
-1. Inimigos atingidos por projéteis são destruídos, a princípio
+[ ] 1. Inimigos atingidos por projéteis são destruídos, a princípio
 
 
 [ ] Vida dos inimigos
 
 **Requer [Destruição de inimigos](#destruição-de-inimigos)**
 
-1. Inimigos possuem vida atual e máxima
+[ ] 1. Inimigos possuem vida atual e máxima
 
-2. Todo inimigo começa com sua vida atual igual a sua máxima
+[ ] 2. Todo inimigo começa com sua vida atual igual a sua máxima
 
-3. A vida máxima de cada inimigo deve ser especificada no banco de dados
+[ ] 3. A vida máxima de cada inimigo deve ser especificada no banco de dados
 
-4. Se um inimigo ficar com zero ou menos de vida atual, ele é excluído do jogo
+[ ] 4. Se um inimigo ficar com zero ou menos de vida atual, ele é excluído do jogo
 
 
 [ ] Entidades
 
 **Requer [Vida das torres](#vida-das-torres), [Vida dos inimigos](#vida-dos-inimigos)**
 
-1. Refatorar o código repetido de vida de torres e inimigos para um só lugar
+[ ] 1. Refatorar o código repetido de vida de torres e inimigos para um só lugar
 
-2. Fazer que ambos sejam subtipos de entidades (*entities*)
+[ ] 2. Fazer que ambos sejam subtipos de entidades (*entities*)
 
 
 [ ] Poder dos inimigos
 
 **Requer [Destruição de torres](#destruição-de-torres)**
 
-1. Inimigos possuem um valor de poder (*power*)
+[ ] 1. Inimigos possuem um valor de poder (*power*)
 
-2. Esse valor é determinado pelo banco de dados
+[ ] 2. Esse valor é determinado pelo banco de dados
 
-3. Quando inimigos encostam em uma torre, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de uma quantidade fixa universal)
+[ ] 3. Quando inimigos encostam em uma torre, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de uma quantidade fixa universal)
 
 
 [ ] Poder das torres
 
 **Requer [Vida dos inimigos](#vida-dos-inimigos)**
 
-1. Torres possuem um valor de poder (*power*)
+[ ] 1. Torres possuem um valor de poder (*power*)
 
-2. Esse valor é determinado pelo banco de dados
+[ ] 2. Esse valor é determinado pelo banco de dados
 
-3. Quando projéteis disparados por uma torre acertam um inimigo, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de destruí-los invariavelmente)
+[ ] 3. Quando projéteis disparados por uma torre acertam um inimigo, eles reduzem uma quantidade de vida igual ao seu poder (ao invés de destruí-los invariavelmente)
 
 
 [ X ] Dinheiro
 
-1. Você gasta dinheiro quando constrói uma torre
+[ ] 1. Você gasta dinheiro quando constrói uma torre
 
-2. Você não pode construir uma torre se não tiver dinheiro para tal
+[ ] 2. Você não pode construir uma torre se não tiver dinheiro para tal
 
-2. Você ganha dinheiro quando derrota inimigos
+[ ] 3. Você ganha dinheiro quando derrota inimigos
 
 
 [ ] Custo de torres
 
 **Requer [Dinheiro](#dinheiro)**
 
-1. Toda torre possui um custo
+[ ] 1. Toda torre possui um custo
 
-2. O custo de uma torre é o valor gasto para construí-la
+[ ] 2. O custo de uma torre é o valor gasto para construí-la
 
 
 [ ] Valor dos inimigos
 
 **Requer [Dinheiro](#dinheiro)**
 
-1. Todo inimigo possui um valor
+[ ] 1. Todo inimigo possui um valor
 
-2. A quantidade de dinheito ganha por derrotar um inimigo é determinada pelo seu valor
+[ ] 2. A quantidade de dinheito ganha por derrotar um inimigo é determinada pelo seu valor
 
 
 [ ] Sucatear
 
 **Requer [Dinheiro](#dinheiro)**
 
-1. Você pode clicar com botão direito numa torre para destruir ela e ganhar
+[ ] 1. Você pode clicar com botão direito numa torre para destruir ela e ganhar
 metade do valor de volta
 
 
@@ -158,62 +158,62 @@ metade do valor de volta
 
 **Requer [Inimigos](#inimigos)**
 
-1. A quantidade de inimigos criados aumenta ao longo do tempo
+[ ] 1. A quantidade de inimigos criados aumenta ao longo do tempo
 
 
 [ X ] Velocidade de inimigos
 
 **Requer [Inimigos](#inimigos)**
 
-1. Todo inimigo possui uma velocidade (*speed*)
+[ ] 1. Todo inimigo possui uma velocidade (*speed*)
 
-2. Essa velocidade determina a velocidade de movimento dos inimigos
+[ ] 2. Essa velocidade determina a velocidade de movimento dos inimigos
 
-3. A velocidade de cada inimigo é determinada no banco de dados
+[ ] 3. A velocidade de cada inimigo é determinada no banco de dados
 
 
 [ ] Mineradoras
 
 **Requer [Dinheiro](#dinheiro)**
 
-1. Mineradoras são torres que produzem dinheiro de tempos em tempos
+[ ] 1. Mineradoras são torres que produzem dinheiro de tempos em tempos
 
-2. Toda mineradora tem uma taxa de produção com a qual ela produz dinheiro
+[ ] 2. Toda mineradora tem uma taxa de produção com a qual ela produz dinheiro
 
-3. A taxa de produção de cada mineradora é determinada no banco de dados
+[ ] 3. A taxa de produção de cada mineradora é determinada no banco de dados
 
 
 [ ] Movimento lateral
 
 **Requer [Inimigos](#inimigos)**
 
-1. Inimigos podem se mover lateralmente, avançando diagonalmente pelo mapa
+[ ] 1. Inimigos podem se mover lateralmente, avançando diagonalmente pelo mapa
 
-2. Inimigos determinam seus movimento através de uma série de pares (direção, duração), onde direção pode ser "frente", "cima" ou "baixo", e duração é um valor em segundos
+[ ] 2. Inimigos determinam seus movimento através de uma série de pares (direção, duração), onde direção pode ser "frente", "cima" ou "baixo", e duração é um valor em segundos
 
-3. A sequência de movimentos de cada inimigo deve ser determinada no banco de dados
+[ ] 3. A sequência de movimentos de cada inimigo deve ser determinada no banco de dados
 
 
 [ ] Torres temporárias
 
-1. Torres podem ter uma duração, que indica quantos segundos elas ficam em jogo antes de serem destruídas por desgaste
+[ ] 1. Torres podem ter uma duração, que indica quantos segundos elas ficam em jogo antes de serem destruídas por desgaste
 
-2. Para isso, elas também precisam de um contador de tempo, que ajuda a detectar quando a duração da torre passou
+[ ] 2. Para isso, elas também precisam de um contador de tempo, que ajuda a detectar quando a duração da torre passou
 
-3. A duração de cada torre deve ser determinada no banco de dados
+[ ] 3. A duração de cada torre deve ser determinada no banco de dados
 
-4. Uma duração de zero indica que a torre dura pra sempre ou até ser destruída
+[ ] 4. Uma duração de zero indica que a torre dura pra sempre ou até ser destruída
 
 
 [ ] Disparos paralizantes
 
 **Requer [Poder das torres](#poder-das-torres)**
 
-1. Torres podem disparar projéteis que, ao invés de causar dano, paralizam o movimento do inimigo atingido por uma certa quantidade de tempo
+[ ] 1. Torres podem disparar projéteis que, ao invés de causar dano, paralizam o movimento do inimigo atingido por uma certa quantidade de tempo
 
-2. Essa propriedade dos disparos de uma torre deve ser determinada no banco de dados
+[ ] 2. Essa propriedade dos disparos de uma torre deve ser determinada no banco de dados
 
-3. Inimigos precisam ter um contador de paralisia que indica por quantos segundos eles estão paralizados, e esse contador diminui com o tempo
+[ ] 3. Inimigos precisam ter um contador de paralisia que indica por quantos segundos eles estão paralizados, e esse contador diminui com o tempo
 
 
 [ ] Pontos extras

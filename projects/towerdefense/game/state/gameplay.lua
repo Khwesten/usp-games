@@ -120,6 +120,7 @@ function Gameplay:buildTower(i, j)
     self.counter.change = - tower.spec.cost
     self.grid:put(i, j, tower, "tower")
   end
+  tower:shoot()
 end
 
 function Gameplay:selectTower(i)
