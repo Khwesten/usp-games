@@ -14,6 +14,9 @@ end
 
 function BulletSprite:update(dt)
   self.position.x = self.position.x + 1
+  if self.position.x >= 1114 then
+  	self:destroy()
+  end
 end
 
 return BulletSprite
