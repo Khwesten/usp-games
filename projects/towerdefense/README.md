@@ -62,10 +62,10 @@ atual da torre
 
 [ ] 2. Cada torre tem uma taxa de disparo (*firerate*) com a qual dispara projéteis
 
-[ ] 3. Projéteis são só pequenos objetos que se movem para direita à velocidade
+[x] 3. Projéteis são só pequenos objetos que se movem para direita à velocidade
 constante (e são destruídos se saem da tela)
 
-[ ] 4. A taxa de disparo de cada torre deve ser determinada no banco de dados
+[x] 4. A taxa de disparo de cada torre deve ser determinada no banco de dados
 
 
 [ ] Destruição de inimigos
