@@ -1,3 +1,4 @@
+local Character = require 'graphics.character'
 
 local Avatar = new 'graphics.composite' {
   charactername = 'slime',
@@ -16,20 +17,22 @@ local BARS = {
 }
 
 function Avatar:init()
-  self.character = require('database.characters.' .. self.charactername)
+  self.character = Character.load(self.charactername)
   self.sprite = new 'graphics.sprite' {
     filename = self.character.sprite,
     color = COLORS[self.side],
     position = new(Vec) {}
   }
+  healthPercentage = (self.character.currentHealth * 100 / self.character.maxHealth) * 0.01
   self.lifebar = new(BARS[self.side]) {
-    color = { .2, .8, .2 }, value = .9
+    color = { .2, .8, .2 }, value = healthPercentage
   }
   self.cursor = new 'graphics.polygon' {
     position = new(Vec) { 0, -64 },
     vertices = { -16, 0, 16, 0, 0, 20 },
     visible = false
   }
+
   self:add(new 'graphics.shadow' { position = new(Vec) { 0, 48 } })
   self:add(self.sprite)
   self:add(self.lifebar)
