@@ -16,6 +16,11 @@ local BARS = {
   left = 'graphics.rightbar'
 }
 
+local STAMINA_BARS = {
+  left = 'graphics.staminaleftbar',
+  right = 'graphics.staminarightbar'
+}
+
 function Avatar:init()
   self.character = Character.load(self.charactername)
   self.sprite = new 'graphics.sprite' {
@@ -29,6 +34,10 @@ function Avatar:init()
     value = 1
   }
 
+  self.staminabar = new(STAMINA_BARS[self.side]) {
+    value = 1
+  }
+
   self.cursor = new 'graphics.polygon' {
     position = new(Vec) { 0, -64 },
     vertices = { -16, 0, 16, 0, 0, 20 },
@@ -38,6 +47,7 @@ function Avatar:init()
   self:add(new 'graphics.shadow' { position = new(Vec) { 0, 48 } })
   self:add(self.sprite)
   self:add(self.lifebar)
+  self:add(self.staminabar)
   self:add(self.cursor)
   self.counter = love.math.random() * 2 * math.pi
 end
@@ -55,8 +65,9 @@ function Avatar:update(dt)
   self.sprite.position.y = 4 * math.sin(self.counter)
 
   healthPercentage = ((self.character.currentHealth * 100) / self.character.maxHealth) * 0.01
-
   self.lifebar.value = healthPercentage
+
+  self.staminabar.value = self.character.currentStamina * 0.01
 end
 
 return Avatar
