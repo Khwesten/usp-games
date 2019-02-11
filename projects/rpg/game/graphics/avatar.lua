@@ -23,10 +23,12 @@ function Avatar:init()
     color = COLORS[self.side],
     position = new(Vec) {}
   }
-  healthPercentage = (self.character.currentHealth * 100 / self.character.maxHealth) * 0.01
+
   self.lifebar = new(BARS[self.side]) {
-    color = { .2, .8, .2 }, value = healthPercentage
+    color = { .2, .8, .2 },
+    value = 1
   }
+
   self.cursor = new 'graphics.polygon' {
     position = new(Vec) { 0, -64 },
     vertices = { -16, 0, 16, 0, 0, 20 },
@@ -49,8 +51,12 @@ function Avatar:hideCursor()
 end
 
 function Avatar:update(dt)
-   self.counter = self.counter + 5 * dt
-   self.sprite.position.y = 4 * math.sin(self.counter)
+  self.counter = self.counter + 5 * dt
+  self.sprite.position.y = 4 * math.sin(self.counter)
+
+  healthPercentage = ((self.character.currentHealth * 100) / self.character.maxHealth) * 0.01
+
+  self.lifebar.value = healthPercentage
 end
 
 return Avatar
