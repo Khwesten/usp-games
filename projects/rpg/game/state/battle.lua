@@ -41,10 +41,11 @@ end
 
 function Battle:onResume()
   if self.next_action then
-    self.stack:push('execute_action', self, self.next_action)
-    self.next_action = nil
+      self.stack:push('execute_action', self, self.next_action)
+      self.next_action = nil
   else
     self:currentCharacter().avatar:hideCursor()
+
     if self.current_party == 'right' then
       self.current_char = self.current_char % #self.right.characters + 1
     else
@@ -60,13 +61,17 @@ function Battle:onUpdate(dt)
     else
       self.current_party = 'left'
     end
+
     self.current_char = 1
     round = 1
+
+    return
   else
     round = round + 1
   end
 
   self:currentCharacter().avatar:showCursor()
+
   if self:currentCharacter().avatar.charactername == 'slime' then
     self:setNextAction(self.action, {
       target = self:currentCharacter().avatar
@@ -74,7 +79,15 @@ function Battle:onUpdate(dt)
     rand_character = {self.right.characters[love.math.random(1, 4)] }
     self.stack:push('choose_target', self, rand_character)
   else
-    self.stack:push('choose_action', self)
+    executor = self:currentCharacter()
+    currentStaminaExecutor = executor.avatar.character.currentStamina
+
+    if currentStaminaExecutor >= 100 then
+      self.stack:push('choose_action', self)
+    else
+      self.stack:push('execute_action', self, { name = 'stamina' })
+      return
+    end
   end
 end
 
