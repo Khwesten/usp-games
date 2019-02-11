@@ -16,8 +16,10 @@ function StaminaBar:onDraw()
   g.setColor(BG_COLOR)
   g.rectangle('fill', self.x, 0, 5, 50)
 
+  local heightStamina  = 50 - (50  * self.value)
+
   g.setColor(self.color)
-  g.rectangle('fill', self.x, 0, 5, 50  * self.value)
+  g.rectangle('fill', self.x, heightStamina, 5, 50  * self.value)
 end
 
 return StaminaBar
