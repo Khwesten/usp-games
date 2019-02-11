@@ -7,9 +7,8 @@ function ExecuteAction:onEnter(battle, action)
   local name, params = action.name, action.params
 
   executor = battle:currentCharacter()
-  currentStaminaExecutor = executor.avatar.character.currentStamina
 
-  if name == 'attack' and currentStaminaExecutor == 100 then
+  if name == 'attack' then
     attack_executor = executor.avatar.character.spec.attack
 
     local target = params.target
@@ -18,10 +17,11 @@ function ExecuteAction:onEnter(battle, action)
       color = { .9, .9, .2 },
       text = "-"..attack_executor
     })
-    self.delay = 1.0
 
     target.avatar.character.currentHealth = target.avatar.character.currentHealth - attack_executor
     executor.avatar.character.currentStamina = 0
+
+    self.delay = 1.0
   elseif name == 'item' then
     battle.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { params.target.position:get() },
@@ -30,7 +30,17 @@ function ExecuteAction:onEnter(battle, action)
     })
   elseif name == 'stamina' then
     currentStamina = executor.avatar.character.currentStamina
-    executor.avatar.character.currentStamina = currentStamina + executor.avatar.character.spec.staminaRecovery
+    staminaRecovery = executor.avatar.character.spec.staminaRecovery
+
+    battle.graphics:add('fx', new 'graphics.notification' {
+      position = new(Vec) { executor.avatar.position:get() },
+      color = { 1, 0.6, 0 },
+      text = '+' .. staminaRecovery
+    })
+
+    executor.avatar.character.currentStamina = currentStamina + staminaRecovery
+
+    self.delay = .5
   end
 end
 
