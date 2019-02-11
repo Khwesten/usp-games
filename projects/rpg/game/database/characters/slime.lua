@@ -3,5 +3,6 @@ return {
   sprite = 'slime',
   currentHealth = 350,
   maxHealth = 350,
+  attack = 20
 }
 
