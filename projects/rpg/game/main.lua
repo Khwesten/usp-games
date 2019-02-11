@@ -1,6 +1,8 @@
 
 require 'common'
 
+inspect = require('lib/inspect')
+
 local _state_stack
 local _graphics
 
