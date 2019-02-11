@@ -48,8 +48,26 @@ function Battle:onResume()
 end
 
 function Battle:onUpdate(dt)
+  self:removeDeadCharacters(self.right.characters)
+  self:removeDeadCharacters(self.left.characters)
   self:currentCharacter().avatar:showCursor()
   self.stack:push('choose_action', self)
+end
+
+function Battle:removeDeadCharacters(party)
+  local charsToBeRemoved = {}
+  for i, char in ipairs(party) do
+    if char.avatar.character.currentHealth <= 0 then
+      charsToBeRemoved[i] = true
+    end
+  end
+
+  for i=#party,1,-1 do
+    if charsToBeRemoved[i] then
+      party[i].avatar:destroy()
+      table.remove(party, i)
+    end
+  end
 end
 
 function Battle:currentCharacter()
