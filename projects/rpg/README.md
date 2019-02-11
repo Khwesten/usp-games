@@ -61,13 +61,13 @@ atacado
    ataque
 
 
-[] ### Turno dos monstros
+[X] ### Turno dos monstros
 
-[] 1. Fazer a rodada de turnos incluir os monstros
+[X] 1. Fazer a rodada de turnos incluir os monstros
 
-[] 2. Na vez de um monstro, empilhar um estado que vai decidir a ação dele
+[X] 2. Na vez de um monstro, empilhar um estado que vai decidir a ação dele
 
-[] 3. Monstros a princípio devem atacar heróis aleatoriamente
+[X] 3. Monstros a princípio devem atacar heróis aleatoriamente
 
 
 []### Velocidade

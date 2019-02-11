@@ -7,6 +7,8 @@ local Battle = new 'state.base' {
   delay = 0
 }
 
+local round = 1
+
 function Battle:onEnter(graphics)
   self.graphics = graphics
   graphics:add('bg', new 'graphics.arena' {})
@@ -43,15 +45,38 @@ function Battle:onResume()
     self.next_action = nil
   else
     self:currentCharacter().avatar:hideCursor()
-    self.current_char = self.current_char % #self.right.characters + 1
+    if self.current_party == 'right' then
+      self.current_char = self.current_char % #self.right.characters + 1
+    else
+      self.current_char = self.current_char % #self.left.characters + 1
+    end
   end
 end
 
 function Battle:onUpdate(dt)
   self:removeDeadCharacters(self.right.characters)
   self:removeDeadCharacters(self.left.characters)
+  if round > table.getn(self[self.current_party].characters) then
+    if self.current_party == 'left' then
+      self.current_party = 'right'
+    else
+      self.current_party = 'left'
+    end
+    self.current_char = 1
+    round = 1
+  else
+    round = round + 1
+  end
   self:currentCharacter().avatar:showCursor()
-  self.stack:push('choose_action', self)
+  if self:currentCharacter().avatar.charactername == 'slime' then
+    self:setNextAction(self.action, {
+      target = self:currentCharacter().avatar
+    })
+    rand_character = {self.right.characters[love.math.random(1, 4)] }
+    self.stack:push('choose_target', self, rand_character)
+  else
+    self.stack:push('choose_action', self)
+  end
 end
 
 function Battle:removeDeadCharacters(party)
