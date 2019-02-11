@@ -40,13 +40,13 @@ atacado
 [X] 2. A redução deve ser por um valor fixo
 
 
-[] ### Morte
+[X] ### Morte
 
 **Requer [Ataque](#ataque)**
 
-[] 1. Fazer personagens com zero ou menos de vida atual serem excluídos do combate
+[X] 1. Fazer personagens com zero ou menos de vida atual serem excluídos do combate
 
-[] 2. Essa verficação deve ocorrer entre turnos
+[X] 2. Essa verficação deve ocorrer entre turnos
 
 
 [X] ### Poder

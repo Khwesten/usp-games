@@ -55,6 +55,8 @@ function Battle:onResume()
 end
 
 function Battle:onUpdate(dt)
+  self:removeDeadCharacters(self.right.characters)
+  self:removeDeadCharacters(self.left.characters)
   if round > table.getn(self[self.current_party].characters) then
     if self.current_party == 'left' then
       self.current_party = 'right'
@@ -69,7 +71,6 @@ function Battle:onUpdate(dt)
   else
     round = round + 1
   end
-
   self:currentCharacter().avatar:showCursor()
 
   if self:currentCharacter().avatar.charactername == 'slime' then
@@ -87,6 +88,22 @@ function Battle:onUpdate(dt)
     else
       self.stack:push('execute_action', self, { name = 'stamina' })
       return
+    end
+  end
+end
+
+function Battle:removeDeadCharacters(party)
+  local charsToBeRemoved = {}
+  for i, char in ipairs(party) do
+    if char.avatar.character.currentHealth <= 0 then
+      charsToBeRemoved[i] = true
+    end
+  end
+
+  for i=#party,1,-1 do
+    if charsToBeRemoved[i] then
+      party[i].avatar:destroy()
+      table.remove(party, i)
     end
   end
 end
