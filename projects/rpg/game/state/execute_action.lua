@@ -5,14 +5,19 @@ local ExecuteAction = new 'state.base' {
 
 function ExecuteAction:onEnter(battle, action)
   local name, params = action.name, action.params
+
   if name == 'attack' then
+    executor = battle:currentCharacter()
+    attack_executor = executor.avatar.character.spec.attack
+
     local target = params.target
     battle.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { target.avatar.position:get() },
       color = { .9, .9, .2 },
-      text = "-999"
+      text = "-"..attack_executor
     })
     self.delay = 1.0
+    target.avatar.character.currentHealth = target.avatar.character.currentHealth - attack_executor
   elseif name == 'item' then
     battle.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { params.target.position:get() },
