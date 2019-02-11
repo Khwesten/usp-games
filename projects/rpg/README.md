@@ -30,14 +30,14 @@ representar os heróis e os monstros.
 personagem
 
 
-[] ### Ataque
+[X] ### Ataque
 
 **Requer [Personagens](#personagens)**
 
-[] 1. Fazer a ação de ataque reduzir a vida atual ("causar dano") do personagem
+[X] 1. Fazer a ação de ataque reduzir a vida atual ("causar dano") do personagem
 atacado
 
-[] 2. A redução deve ser por um valor fixo
+[X] 2. A redução deve ser por um valor fixo
 
 
 [] ### Morte
@@ -49,15 +49,15 @@ atacado
 [] 2. Essa verficação deve ocorrer entre turnos
 
 
-[] ### Poder
+[X] ### Poder
 
 **Requer [Ataque](#ataque)**
 
-[] 1. Definir um atributo de poder (*power*) nos personagens
+[X] 1. Definir um atributo de poder (*power*) nos personagens
 
-[] 2. O poder de cada personagen é determinado no banco de dados
+[X] 2. O poder de cada personagen é determinado no banco de dados
 
-[] 3. O poder influencia a quantidade de dano que um personagem causa com seu
+[X] 3. O poder influencia a quantidade de dano que um personagem causa com seu
    ataque
 
 
@@ -70,28 +70,28 @@ atacado
 [X] 3. Monstros a princípio devem atacar heróis aleatoriamente
 
 
-[]### Velocidade
+[X]### Velocidade
 
 **Requer [Personagem](#personagem)**
 
-[] 1. Todo personagem tem uma atributo velocidade (*speed*)
+[X] 1. Todo personagem tem uma atributo velocidade (*speed*)
 
-[] 2. A velocidade de cada personagem é definida no banco de dados
+[X] 2. A velocidade de cada personagem é definida no banco de dados
 
 
-[] ### Turnos por velocidade
+[X] ### Turnos por velocidade
 
 **Requer [Turno dos monstros](#turno-dos-monstros), [Velocidade](#velocidade)**
 
-[] 1. Todo personagem tem um contador de descanso (*cooldown*)
+[X] 1. Todo personagem tem um contador de descanso (*cooldown*)
 
-[] 2. Para fazer uma ação, um personagem precisa ter 100 de descanso
+[X] 2. Para fazer uma ação, um personagem precisa ter 100 de descanso
 
-[] 3. No turno de um personagem, se ele não tem 100 de descanso, então ele acumula uma quantidade de descanso igual à sua velocidade e passa a vez
+[X] 3. No turno de um personagem, se ele não tem 100 de descanso, então ele acumula uma quantidade de descanso igual à sua velocidade e passa a vez
 
-[] 4. Ao executar uma ação, o personagem zera seu contador de descanso
+[X] 4. Ao executar uma ação, o personagem zera seu contador de descanso
 
-[] 5. [Referência](http://journal.stuffwithstuff.com/2014/07/15/a-turn-based-game-loop/)
+[X] 5. [Referência](http://journal.stuffwithstuff.com/2014/07/15/a-turn-based-game-loop/)
 
 
 [] ### Derrota
