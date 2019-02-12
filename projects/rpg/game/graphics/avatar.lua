@@ -64,10 +64,16 @@ function Avatar:update(dt)
   self.counter = self.counter + 5 * dt
   self.sprite.position.y = 4 * math.sin(self.counter)
 
-  healthPercentage = ((self.character.currentHealth * 100) / self.character.maxHealth) * 0.01
-  self.lifebar.value = healthPercentage
-
+  self.lifebar.value = self:getHealthPercentage()
   self.staminabar.value = self.character.currentStamina * 0.01
+end
+
+function Avatar:getHealthPercentage()
+  if self.character.currentHealth <= 0 then
+    return 0
+  else
+    return ((self.character.currentHealth * 100) / self.character.maxHealth) * 0.01
+  end
 end
 
 return Avatar

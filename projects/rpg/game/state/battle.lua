@@ -99,7 +99,6 @@ function Battle:removeDeadCharacters(party)
       charsToBeRemoved[i] = true
     end
   end
-
   for i=#party,1,-1 do
     if charsToBeRemoved[i] then
       party[i].avatar:destroy()
