@@ -96,9 +96,12 @@ function Battle:onUpdate(dt)
       name = 'attack',
       params = { target = rand_characters[1] }
     }
-
-    self.stack:push('choose_target', self, rand_characters)
-    self.stack:push('execute_action', self, attack_action)
+    if self:currentCharacter().avatar.character.currentStamina >= 100 then
+      self.stack:push('choose_target', self, rand_characters)
+      self.stack:push('execute_action', self, attack_action)
+    else
+      self.stack:push('execute_action', self, { name = 'stamina' })
+    end
   else
     executor = self:currentCharacter()
     currentStaminaExecutor = executor.avatar.character.currentStamina

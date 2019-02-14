@@ -4,6 +4,5 @@ return {
   currentHealth = 350,
   maxHealth = 350,
   attack = 20,
-  staminaRecovery = 100
+  staminaRecovery = 50
 }
-
