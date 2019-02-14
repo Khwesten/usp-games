@@ -52,7 +52,7 @@ end
 
 function ChooseAction:item()
   self.action = 'item'
-  self.items = { "Potion", "Wind Crystal", "Strawberry Cake" }
+  self.items = { "Potion", "Wind Crystal", "Strawberry Cake", "Nuggets", "Cookie", "Milk" }
   self.stack:push('choose_option', self.battle, self.items)
 end
 
