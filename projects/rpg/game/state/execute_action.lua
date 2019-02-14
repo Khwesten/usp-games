@@ -23,11 +23,25 @@ function ExecuteAction:onEnter(battle, action)
 
     self.delay = 1.0
   elseif name == 'item' then
+    if params.item == 'Milk' then
+      symbol = '-'
+      executor.avatar.character.currentHealth = executor.avatar.character.currentHealth - 50
+      color = { 0.9, 0, 0 }
+    else
+      symbol = '+'
+      executor.avatar.character.currentHealth = executor.avatar.character.currentHealth + 50
+      color = { .2, .9, .9 }
+    end
+
     battle.graphics:add('fx', new 'graphics.notification' {
       position = new(Vec) { params.target.position:get() },
-      color = { .2, .9, .9 },
-      text = params.item
+      color = color,
+      text = symbol .. '50'
     })
+
+    executor.avatar.character.currentStamina = 0
+
+    self.delay = 1.0
   elseif name == 'stamina' then
     currentStamina = executor.avatar.character.currentStamina
     staminaRecovery = executor.avatar.character.spec.staminaRecovery
