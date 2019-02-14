@@ -21,6 +21,7 @@ end
 
 function ChooseOption:choose(i)
   self.options.chosen = self.options[i]
+  table.remove(self.options, i)
   self.stack:pop()
 end
 
