@@ -120,9 +120,9 @@ dados
 no banco de dados (em uma pasta "adventures").
 
 
-[] ### Inventório
+[X] ### Inventório
 
-[] 1. Quando um item é usado, ele é consumido
+[X] 1. Quando um item é usado, ele é consumido
 
 [X] 2. A equipe de heróis possui um inventário (*inventory*) com os itens que eles podem usar
 
@@ -140,7 +140,7 @@ no banco de dados (em uma pasta "adventures").
 [] 3. Monstros só deixam itens se houver espaço no inventório dos heróis
 
 
-[] ### Itens de recuperação
+[X] ### Itens de recuperação
 
 **Requer [Personagens](#personagens), [Inventório](#inventório)**
 
