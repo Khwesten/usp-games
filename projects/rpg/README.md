@@ -94,15 +94,15 @@ atacado
 [X] 5. [Referência](http://journal.stuffwithstuff.com/2014/07/15/a-turn-based-game-loop/)
 
 
-[] ### Derrota
+[X] ### Derrota
 
 **Requer [Morte](#morte)**
 
-[] 1. Se todos os heróis morrerem, o jogador perde
+[X] 1. Se todos os heróis morrerem, o jogador perde
 
-[] 2. Ao perder, deve aparecer uma tela de derrota
+[X] 2. Ao perder, deve aparecer uma tela de derrota
 
-[] 3. Ao apertar qualquer botão na tela de derrota, o jogo deve recomeçar
+[X] 3. Ao apertar qualquer botão na tela de derrota, o jogo deve recomeçar
 
 
 [] ### Vitória
