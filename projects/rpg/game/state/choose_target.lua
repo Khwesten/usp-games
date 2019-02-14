@@ -14,6 +14,12 @@ function ChooseTarget:onEnter(battle, targets)
   }
   battle.graphics:add('cursor', self.cursor)
   battle.graphics:focus(self.cursor)
+
+  local currentCharacter = battle:currentCharacter()
+
+  if currentCharacter.avatar.charactername == 'slime' then
+    self:choose(i)
+  end
 end
 
 function ChooseTarget:onLeave()
