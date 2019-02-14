@@ -74,7 +74,7 @@ function Battle:onUpdate(dt)
   self:currentCharacter().avatar:showCursor()
 
   if self:currentCharacter().avatar.charactername == 'slime' then
-    rand_characters = { self.right.characters[love.math.random(#self['right'])] }
+    rand_characters = { self.right.characters[love.math.random(#self['right'].characters)] }
     attack_action = {
       name = 'attack',
       params = { target = rand_characters[1] }
