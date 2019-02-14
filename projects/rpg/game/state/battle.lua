@@ -43,7 +43,8 @@ function Battle:onResume()
   if self.next_action then
       self.stack:push('execute_action', self, self.next_action)
       self.next_action = nil
-  else
+  end
+  if self:currentCharacter() then
     self:currentCharacter().avatar:hideCursor()
 
     if self.current_party == 'right' then
@@ -57,6 +58,9 @@ end
 function Battle:onUpdate(dt)
   self:removeDeadCharacters(self.right.characters)
   self:removeDeadCharacters(self.left.characters)
+  if #self.right.characters == 0 then
+    self.stack:push('game_over', self.graphics)
+  end
   if round > table.getn(self[self.current_party].characters) then
     if self.current_party == 'left' then
       self.current_party = 'right'
