@@ -124,9 +124,9 @@ no banco de dados (em uma pasta "adventures").
 
 [] 1. Quando um item é usado, ele é consumido
 
-[] 2. A equipe de heróis possui um inventário (*inventory*) com os itens que eles podem usar
+[X] 2. A equipe de heróis possui um inventário (*inventory*) com os itens que eles podem usar
 
-[] 3. O inventório possui 6 espaços para itens
+[X] 3. O inventório possui 6 espaços para itens
 
 
 [] ### Tesouro
@@ -144,11 +144,11 @@ no banco de dados (em uma pasta "adventures").
 
 **Requer [Personagens](#personagens), [Inventório](#inventório)**
 
-[] 1. Itens podem recuperar uma quantidade fixa de algum recurso que o personagem tenha (como sua vida atual)
+[X] 1. Itens podem recuperar uma quantidade fixa de algum recurso que o personagem tenha (como sua vida atual)
 
-[] 2. A quantidade de recurso que eles recuperam deve ser mantida no banco de dados
+[X] 2. A quantidade de recurso que eles recuperam deve ser mantida no banco de dados
 
-[] 3. Nem todo item possui efeito de recuperação
+[X] 3. Nem todo item possui efeito de recuperação
 
 
 [] ### Habilidades
