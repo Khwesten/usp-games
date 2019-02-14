@@ -14,6 +14,18 @@ function Battle:onEnter(graphics)
   graphics:add('bg', new 'graphics.arena' {})
   self:loadParty('right', 'heroes')
   self:loadParty('left', 'slimes01')
+  self:loadItens()
+end
+
+function Battle:loadItens()
+  local items = {}
+  local itemsNames = require('database.items.list')
+
+  for i, item in ipairs(itemsNames) do
+    items[i] = item
+  end
+
+  self["items"] = items
 end
 
 function Battle:loadParty(side, name)
@@ -36,6 +48,7 @@ function Battle:loadParty(side, name)
     }
     self.graphics:add('entities', party.characters[i].avatar)
   end
+
   self[side] = party
 end
 
