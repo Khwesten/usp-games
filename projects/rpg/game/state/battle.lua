@@ -74,11 +74,14 @@ function Battle:onUpdate(dt)
   self:currentCharacter().avatar:showCursor()
 
   if self:currentCharacter().avatar.charactername == 'slime' then
-    self:setNextAction(self.action, {
-      target = self:currentCharacter().avatar
-    })
-    rand_character = {self.right.characters[love.math.random(1, 4)] }
-    self.stack:push('choose_target', self, rand_character)
+    rand_characters = { self.right.characters[love.math.random(#self['right'])] }
+    attack_action = {
+      name = 'attack',
+      params = { target = rand_characters[1] }
+    }
+
+    self.stack:push('choose_target', self, rand_characters)
+    self.stack:push('execute_action', self, attack_action)
   else
     executor = self:currentCharacter()
     currentStaminaExecutor = executor.avatar.character.currentStamina
