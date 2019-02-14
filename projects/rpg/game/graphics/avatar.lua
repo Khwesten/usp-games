@@ -71,6 +71,8 @@ end
 function Avatar:getHealthPercentage()
   if self.character.currentHealth <= 0 then
     return 0
+  elseif self.character.currentHealth <= (self.character.maxHealth/10) then
+    return 0.1
   else
     return ((self.character.currentHealth * 100) / self.character.maxHealth) * 0.01
   end
