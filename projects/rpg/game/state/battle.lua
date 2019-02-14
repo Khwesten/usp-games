@@ -87,7 +87,6 @@ function Battle:onUpdate(dt)
       self.stack:push('choose_action', self)
     else
       self.stack:push('execute_action', self, { name = 'stamina' })
-      return
     end
   end
 end
